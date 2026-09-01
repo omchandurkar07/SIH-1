@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Civic Pulse - Home Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#002113",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary": "#006c49",
+                      "surface-bright": "#f7f9fb",
+                      "outline-variant": "#c6c6cd",
+                      "on-tertiary-container": "#3980f4",
+                      "on-primary-container": "#7c839b",
+                      "tertiary": "#000000",
+                      "outline": "#76777d",
+                      "primary-fixed": "#dae2fd",
+                      "surface-container": "#eceef0",
+                      "on-surface-variant": "#45464d",
+                      "surface-container-low": "#f2f4f6",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#6cf8bb",
+                      "tertiary-fixed-dim": "#adc6ff",
+                      "inverse-surface": "#2d3133",
+                      "on-background": "#191c1e",
+                      "on-tertiary-fixed-variant": "#004395",
+                      "surface-variant": "#e0e3e5",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "on-secondary-container": "#00714d",
+                      "secondary-fixed-dim": "#4edea3",
+                      "tertiary-container": "#001a42",
+                      "on-tertiary-fixed": "#001a42",
+                      "tertiary-fixed": "#d8e2ff",
+                      "primary-container": "#131b2e",
+                      "on-primary-fixed": "#131b2e",
+                      "on-secondary-fixed-variant": "#005236",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#565e74",
+                      "surface-container-high": "#e6e8ea",
+                      "on-primary": "#ffffff",
+                      "inverse-primary": "#bec6e0",
+                      "on-surface": "#191c1e",
+                      "primary": "#000000",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#6ffbbe",
+                      "surface": "#f7f9fb",
+                      "background": "#f7f9fb",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed-dim": "#bec6e0",
+                      "surface-dim": "#d8dadc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "margin-desktop": "48px"
+              },
+              "fontFamily": {
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "60px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .skeleton {
+            background: linear-gradient(90deg, #f0f2f5 25%, #e2e8f0 50%, #f0f2f5 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased flex flex-col min-h-screen">
+<!-- TopNavBar (Web only) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface border-b border-outline-variant hidden md:flex">
+<div class="flex items-center gap-4">
+<a href="landing_page.html" class="text-headline-md font-headline-md font-bold text-primary hover:opacity-80">Civic Pulse</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+<a href="report_a_problem_flow.html" class="bg-primary text-on-primary px-4 py-2 rounded-full font-label-md text-label-md font-bold flex items-center gap-2 hover:opacity-90 transition-opacity">+ Report Problem</a>
+</div>
+</header>
+<!-- Mobile Header -->
+<div class="md:hidden sticky top-0 bg-surface z-40 px-margin-mobile pt-4 pb-2 border-b border-outline-variant shadow-sm flex items-center justify-between">
+<span class="text-headline-lg-mobile font-headline-lg-mobile text-primary tracking-tight">Civic Pulse</span>
+<div class="flex gap-2">
+<button class="p-2 text-on-surface-variant rounded-full bg-surface-container-low relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant rounded-full bg-surface-container-low">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex flex-1 pt-0 md:pt-16 pb-20 md:pb-0">
+<!-- SideNavBar (Web only) -->
+<nav class="hidden md:flex flex-col h-[calc(100vh-64px)] w-64 fixed left-0 top-16 bg-surface-container-lowest border-r border-outline-variant p-6 gap-unit">
+<a class="bg-secondary-container text-on-secondary-container rounded-xl font-bold px-4 py-3 flex items-center gap-3 text-label-md font-label-md" href="mobile_home_feed.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+Home
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 text-label-md font-label-md hover:bg-surface-container-high rounded-xl transition-colors" href="district_insights_map.html">
+<span class="material-symbols-outlined">explore</span>
+Explore
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 text-label-md font-label-md hover:bg-surface-container-high rounded-xl transition-colors" href="problem_details_page.html">
+<span class="material-symbols-outlined">assignment</span>
+My Problems
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 text-label-md font-label-md hover:bg-surface-container-high rounded-xl transition-colors" href="impact_tracking_dashboard.html">
+<span class="material-symbols-outlined">rocket_launch</span>
+Projects
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 text-label-md font-label-md hover:bg-surface-container-high rounded-xl transition-colors" href="ai_analysis_center.html">
+<span class="material-symbols-outlined">psychology</span>
+AI Analysis
+</a>
+<div class="mt-auto border-t border-outline-variant pt-4 flex flex-col gap-2">
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 text-label-md font-label-md hover:bg-surface-container-high rounded-xl transition-colors" href="partner_directory.html">
+<span class="material-symbols-outlined">settings</span>
+Settings
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 text-label-md font-label-md hover:bg-surface-container-high rounded-xl transition-colors" href="landing_page.html">
+<span class="material-symbols-outlined">help</span>
+Support
+</a>
+</div>
+</nav>
+<!-- Feed Container -->
+<main class="w-full md:pl-64 flex-1 flex flex-col items-center">
+<div class="w-full max-w-[600px] px-margin-mobile md:px-0 py-4 flex flex-col gap-6">
+<!-- Location Header -->
+<div class="flex items-center gap-2 text-on-surface-variant cursor-pointer">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<span class="font-label-md text-label-md font-medium">Problems near <strong class="text-on-surface">Ranchi, Jharkhand</strong> (10km)</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</div>
+<!-- Categories -->
+<div class="flex overflow-x-auto gap-3 pb-2 hide-scrollbar -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0" id="category-container">
+  <button onclick="filterMobileFeed('all', this)" class="category-chip whitespace-nowrap px-4 py-1.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm border border-secondary shadow-sm transition-all active">All Issues</button>
+  <button onclick="filterMobileFeed('potholes', this)" class="category-chip whitespace-nowrap px-4 py-1.5 rounded-full bg-surface text-on-surface-variant font-label-sm text-label-sm border border-outline-variant hover:bg-surface-container-low transition-all">Potholes</button>
+  <button onclick="filterMobileFeed('water', this)" class="category-chip whitespace-nowrap px-4 py-1.5 rounded-full bg-surface text-on-surface-variant font-label-sm text-label-sm border border-outline-variant hover:bg-surface-container-low transition-all">Water Supply</button>
+  <button onclick="filterMobileFeed('streetlights', this)" class="category-chip whitespace-nowrap px-4 py-1.5 rounded-full bg-surface text-on-surface-variant font-label-sm text-label-sm border border-outline-variant hover:bg-surface-container-low transition-all">Streetlights</button>
+  <button onclick="filterMobileFeed('garbage', this)" class="category-chip whitespace-nowrap px-4 py-1.5 rounded-full bg-surface text-on-surface-variant font-label-sm text-label-sm border border-outline-variant hover:bg-surface-container-low transition-all">Garbage</button>
+</div>
+<div class="skeleton h-8 w-24 rounded-full flex-shrink-0 category-skeleton"></div>
+<div class="skeleton h-8 w-28 rounded-full flex-shrink-0 category-skeleton"></div>
+<div class="skeleton h-8 w-20 rounded-full flex-shrink-0 category-skeleton"></div>
+<!-- Real categories hidden initially -->
+<button class="category-chip hidden whitespace-nowrap px-4 py-1.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm border border-secondary shadow-sm">All Issues</button>
+<button class="category-chip hidden whitespace-nowrap px-4 py-1.5 rounded-full bg-surface text-on-surface-variant font-label-sm text-label-sm border border-outline-variant hover:bg-surface-container-low">Potholes</button>
+<button class="category-chip hidden whitespace-nowrap px-4 py-1.5 rounded-full bg-surface text-on-surface-variant font-label-sm text-label-sm border border-outline-variant hover:bg-surface-container-low">Water Supply</button>
+<button class="category-chip hidden whitespace-nowrap px-4 py-1.5 rounded-full bg-surface text-on-surface-variant font-label-sm text-label-sm border border-outline-variant hover:bg-surface-container-low">Streetlights</button>
+<button class="category-chip hidden whitespace-nowrap px-4 py-1.5 rounded-full bg-surface text-on-surface-variant font-label-sm text-label-sm border border-outline-variant hover:bg-surface-container-low">Garbage</button>
+</div>
+<!-- Feed Items -->
+<div class="flex flex-col gap-4" id="feed-container">
+<!-- Skeleton Card 1 -->
+<article class="feed-skeleton bg-surface-container-lowest rounded-xl border border-outline-variant p-4 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 items-center">
+<div class="skeleton w-10 h-10 rounded-full"></div>
+<div class="flex flex-col gap-2">
+<div class="skeleton w-24 h-4 rounded"></div>
+<div class="skeleton w-16 h-3 rounded"></div>
+</div>
+</div>
+<div class="skeleton w-16 h-6 rounded-full"></div>
+</div>
+<div class="skeleton w-full h-40 rounded-lg"></div>
+<div class="flex flex-col gap-2">
+<div class="skeleton w-3/4 h-5 rounded"></div>
+<div class="skeleton w-full h-4 rounded"></div>
+<div class="skeleton w-5/6 h-4 rounded"></div>
+</div>
+<div class="flex justify-between mt-2 pt-4 border-t border-outline-variant">
+<div class="skeleton w-20 h-8 rounded-full"></div>
+<div class="skeleton w-20 h-8 rounded-full"></div>
+<div class="skeleton w-16 h-8 rounded-full"></div>
+</div>
+</article>
+<!-- Skeleton Card 2 -->
+<article class="feed-skeleton bg-surface-container-lowest rounded-xl border border-outline-variant p-4 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 items-center">
+<div class="skeleton w-10 h-10 rounded-full"></div>
+<div class="flex flex-col gap-2">
+<div class="skeleton w-24 h-4 rounded"></div>
+<div class="skeleton w-16 h-3 rounded"></div>
+</div>
+</div>
+<div class="skeleton w-16 h-6 rounded-full"></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="skeleton w-2/3 h-5 rounded"></div>
+<div class="skeleton w-full h-4 rounded"></div>
+<div class="skeleton w-4/5 h-4 rounded"></div>
+</div>
+<div class="flex justify-between mt-2 pt-4 border-t border-outline-variant">
+<div class="skeleton w-20 h-8 rounded-full"></div>
+<div class="skeleton w-20 h-8 rounded-full"></div>
+<div class="skeleton w-16 h-8 rounded-full"></div>
+</div>
+</article>
+<!-- Actual Content (Hidden Initially) -->
+<!-- Problem Card 1 -->
+<article class="feed-content hidden bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+<div class="p-6 flex flex-col gap-4">
+<!-- Header -->
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold">
+                                        R
+                                    </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Rahul Sharma</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 2 hours ago
+                                        </p>
+</div>
+</div>
+<span class="px-3 py-1 bg-[#e0f2fe] text-[#0369a1] text-label-sm font-label-sm rounded-full font-bold">Reported</span>
+</div>
+<!-- Media (Optional) -->
+<div class="w-full h-48 rounded-lg overflow-hidden relative">
+<div class="bg-cover bg-center w-full h-full" data-alt="A detailed wide shot of a large, deep pothole in the middle of a paved city street during daytime. The edges of the pothole are jagged and surrounded by loose asphalt. The street appears busy, implying urgency. The lighting is bright and natural, casting sharp shadows inside the cavity. The overall aesthetic is raw, documentary-style urban reality, maintaining a clean visual composition suitable for a modern civic app." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDByBbVVO5WWsZYUl5fDES0RA82OItKlWkdnrvIX6b_SKMkUbaTtdGi1sYVVhOgqgffOoiyzGRWm6HKAcUDSQPhKVmRtNxs9XFs4JHtPf-DQH3CjtykfERFDD05cpQW33cSO5ZXuExmRH5zOwC_G1UrQj2yS1-n_DoWa_hAYlWHnWzjpo2ugKD6AI2KDHKU-TFVP_XtmjIQG7E2GeyQUT_A-P5n9TbF30y78F1PH4l1cCxwc8lpagHN')"></div>
+</div>
+<!-- Body -->
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 leading-tight"><a href="problem_details_page.html" class="hover:text-secondary transition-colors">Massive Pothole on Main Arterial Road</a></h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">This crater has been growing for weeks. Several cars have damaged their suspensions. It's especially dangerous at night due to poor street lighting in this specific section.</p>
+<div class="mt-3 flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                    MG Road, Near City Center Mall
+                                </div>
+</div>
+</div>
+<!-- Actions -->
+<div class="bg-surface-container-low px-6 py-3 flex justify-between items-center border-t border-outline-variant">
+<button class="flex items-center gap-2 text-primary font-label-md text-label-md px-3 py-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">group_add</span>
+<span>I'm Affected (42)</span>
+</button>
+<button class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md px-3 py-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">comment</span>
+<span>12</span>
+</button>
+<button class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md px-3 py-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</article>
+<!-- Problem Card 2 -->
+<article class="feed-content hidden bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+<div class="p-6 flex flex-col gap-4">
+<!-- Header -->
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold">
+                                        P
+                                    </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Priya Desai</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 1 day ago
+                                        </p>
+</div>
+</div>
+<span class="px-3 py-1 bg-[#fef3c7] text-[#b45309] text-label-sm font-label-sm rounded-full font-bold">In Progress</span>
+</div>
+<!-- Body (No Image) -->
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 leading-tight"><a href="problem_details_page.html" class="hover:text-secondary transition-colors">Irregular Water Supply in Sector 4</a></h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">For the past three days, water supply has been erratic, coming only for 30 minutes at odd hours (like 2 AM). We are unable to store enough for daily needs. Please look into this urgently.</p>
+<div class="mt-3 flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                    Sector 4, Harmu Housing Colony
+                                </div>
+</div>
+<!-- Status Bar -->
+<div class="mt-2 flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-[#fef3c7] rounded-full overflow-hidden">
+<div class="w-1/2 h-full bg-[#f59e0b]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Assigned to Dept.</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="bg-surface-container-low px-6 py-3 flex justify-between items-center border-t border-outline-variant">
+<button class="flex items-center gap-2 text-primary font-label-md text-label-md px-3 py-2 rounded-lg hover:bg-surface-container transition-colors border border-outline-variant bg-surface">
+<span class="material-symbols-outlined">add_task</span>
+<span>Follow Update</span>
+</button>
+<button class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md px-3 py-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">comment</span>
+<span>8</span>
+</button>
+<button class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md px-3 py-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</article>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface pb-safe border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-secondary font-bold active:bg-surface-container-high p-2 rounded-xl" href="mobile_home_feed.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-label-sm font-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high p-2 rounded-xl" href="district_insights_map.html">
+<span class="material-symbols-outlined">search</span>
+<span class="text-label-sm font-label-sm mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary active:bg-surface-container-high p-2 rounded-xl transform -translate-y-4 bg-surface rounded-full shadow-md border border-outline-variant" href="report_a_problem_flow.html">
+<span class="material-symbols-outlined text-[32px] text-primary" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="text-label-sm font-label-sm mt-1 sr-only">Report</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high p-2 rounded-xl" href="impact_tracking_dashboard.html">
+<span class="material-symbols-outlined">layers</span>
+<span class="text-label-sm font-label-sm mt-1">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-high p-2 rounded-xl" href="partner_directory.html">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-label-sm font-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simulate data loading to swap skeletons for real content
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                // Hide skeletons
+                document.querySelectorAll('.category-skeleton').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.feed-skeleton').forEach(el => el.classList.add('hidden'));
+                
+                // Show content
+                document.querySelectorAll('.category-chip').forEach(el => el.classList.remove('hidden'));
+                document.querySelectorAll('.feed-content').forEach(el => el.classList.remove('hidden'));
+            }, 1500); // 1.5 second simulated delay
+        });
+    </script>
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (19)</span>
+    </button>
+  </div>
+  
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  <div id="civic-pulse-screen-navigator" class="fixed bottom-4 right-4 z-[9999] font-sans">
+    <div id="screen-nav-menu" class="hidden mb-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 p-3 w-64 max-h-80 overflow-y-auto transition-all">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-gray-100">
+        <span class="text-xs font-bold text-gray-800 uppercase tracking-wider">All 21 Screens</span>
+        <a href="../index.html" class="text-[11px] text-blue-600 hover:underline font-medium">Index ↗</a>
+      </div>
+      <div class="space-y-0.5">
+        
+    <a href="landing_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Landing Page
+    </a>
+  
+    <a href="login.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Sign In / Login
+    </a>
+  
+    <a href="signup.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Register / Sign Up
+    </a>
+  
+    <a href="citizen_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen Home Feed
+    </a>
+  
+    <a href="mobile_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors bg-black text-white font-bold">
+      Mobile Home Feed
+    </a>
+  
+    <a href="report_a_problem_flow.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Report a Problem
+    </a>
+  
+    <a href="duplicate_problem_detection.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Duplicate Detection
+    </a>
+  
+    <a href="problem_details_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Problem Details
+    </a>
+  
+    <a href="university_recommendations.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Recommendations
+    </a>
+  
+    <a href="recommendation_detail_view.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Recommendation Details
+    </a>
+  
+    <a href="match_evidence_details.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Match Evidence
+    </a>
+  
+    <a href="university_comparison.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Comparison
+    </a>
+  
+    <a href="partner_directory.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Partner Directory
+    </a>
+  
+    <a href="government_command_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Command Center
+    </a>
+  
+    <a href="government_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Dashboard
+    </a>
+  
+    <a href="district_insights_map.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      District Insights Map
+    </a>
+  
+    <a href="ai_analysis_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      AI Analysis Center
+    </a>
+  
+    <a href="impact_tracking_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Impact Tracking
+    </a>
+  
+    <a href="solution_impact_report.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Solution Impact Report
+    </a>
+  
+    <a href="citizen_government_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen-Gov Ecosystem
+    </a>
+  
+    <a href="innovation_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Innovation Ecosystem
+    </a>
+  
+      </div>
+    </div>
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (21)</span>
+    </button>
+  </div>
+  
+
+<script>
+  function filterMobileFeed(category, btnElement) {
+    const chips = document.querySelectorAll('.category-chip');
+    chips.forEach(chip => {
+      chip.classList.remove('bg-secondary', 'text-on-secondary', 'border-secondary', 'shadow-sm', 'active');
+      chip.classList.add('bg-surface', 'text-on-surface-variant', 'border-outline-variant');
+    });
+
+    if (btnElement) {
+      btnElement.classList.remove('bg-surface', 'text-on-surface-variant', 'border-outline-variant');
+      btnElement.classList.add('bg-secondary', 'text-on-secondary', 'border-secondary', 'shadow-sm', 'active');
+    }
+
+    const items = document.querySelectorAll('.feed-mobile-item');
+    items.forEach(item => {
+      const itemCat = item.getAttribute('data-category');
+      if (category === 'all' || itemCat === category) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+</script>
+  
+</body></html>

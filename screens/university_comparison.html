@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Compare University Partners</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#002113",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary": "#006c49",
+                      "surface-bright": "#f7f9fb",
+                      "outline-variant": "#c6c6cd",
+                      "on-tertiary-container": "#3980f4",
+                      "on-primary-container": "#7c839b",
+                      "tertiary": "#000000",
+                      "outline": "#76777d",
+                      "primary-fixed": "#dae2fd",
+                      "surface-container": "#eceef0",
+                      "on-surface-variant": "#45464d",
+                      "surface-container-low": "#f2f4f6",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#6cf8bb",
+                      "tertiary-fixed-dim": "#adc6ff",
+                      "inverse-surface": "#2d3133",
+                      "on-background": "#191c1e",
+                      "on-tertiary-fixed-variant": "#004395",
+                      "surface-variant": "#e0e3e5",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "on-secondary-container": "#00714d",
+                      "secondary-fixed-dim": "#4edea3",
+                      "tertiary-container": "#001a42",
+                      "on-tertiary-fixed": "#001a42",
+                      "tertiary-fixed": "#d8e2ff",
+                      "primary-container": "#131b2e",
+                      "on-primary-fixed": "#131b2e",
+                      "on-secondary-fixed-variant": "#005236",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#565e74",
+                      "surface-container-high": "#e6e8ea",
+                      "on-primary": "#ffffff",
+                      "inverse-primary": "#bec6e0",
+                      "on-surface": "#191c1e",
+                      "primary": "#000000",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#6ffbbe",
+                      "surface": "#f7f9fb",
+                      "background": "#f7f9fb",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed-dim": "#bec6e0",
+                      "surface-dim": "#d8dadc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "margin-desktop": "48px"
+              },
+              "fontFamily": {
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "60px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen flex overflow-hidden">
+<!-- TopNavBar for Mobile (Hidden on Desktop) -->
+<nav class="md:hidden fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant">
+<div class="text-headline-md font-headline-md font-bold text-primary flex items-center gap-2">
+            Civic Pulse
+        </div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">account_circle</span>
+</div>
+</nav>
+<!-- SideNavBar (Hidden on Mobile) -->
+<nav class="hidden md:flex flex-col h-screen p-6 gap-unit w-64 bg-surface-container-lowest border-r border-outline-variant shrink-0">
+<div class="mb-8">
+<h1 class="text-headline-md font-headline-md font-bold text-primary">Civic Pulse</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Citizen Portal</p>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md mb-6 hover:opacity-90 transition-opacity">
+            + Report Problem
+        </button>
+<div class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-label-md font-label-md">Explore</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="text-label-md font-label-md">My Problems</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold transition-transform scale-95" href="#">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="text-label-md font-label-md">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-label-md font-label-md">AI Analysis</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-2 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-label-md font-label-md">Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto pt-20 md:pt-8 px-margin-mobile md:px-margin-desktop pb-24 md:pb-8 bg-surface w-full max-w-[container-max] mx-auto">
+<header class="mb-8">
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary">Compare University Partners</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-2">Evaluate potential academic collaborators based on key performance metrics.</p>
+</header>
+<!-- Bento Grid / Glassmorphism Comparison Container -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col md:flex-row">
+<!-- Labels Column (Hidden on mobile, implicit in cards) -->
+<div class="hidden md:flex flex-col w-1/4 border-r border-outline-variant bg-surface-container-low pt-[180px]">
+<div class="h-16 flex items-center px-6 border-b border-outline-variant text-label-md font-label-md text-on-surface-variant">Match Score</div>
+<div class="h-16 flex items-center px-6 border-b border-outline-variant text-label-md font-label-md text-on-surface-variant">Domain Expertise</div>
+<div class="h-16 flex items-center px-6 border-b border-outline-variant text-label-md font-label-md text-on-surface-variant">Past Success Rate</div>
+<div class="h-16 flex items-center px-6 border-b border-outline-variant text-label-md font-label-md text-on-surface-variant">Key Faculty Mentors</div>
+<div class="h-16 flex items-center px-6 text-label-md font-label-md text-on-surface-variant">Avg. Response Time</div>
+</div>
+<!-- University A -->
+<div class="flex-1 border-b md:border-b-0 md:border-r border-outline-variant relative">
+<div class="p-6 h-[180px] border-b border-outline-variant bg-surface-container-lowest flex flex-col justify-between items-center text-center relative z-10">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest border border-outline-variant mb-4 overflow-hidden flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[32px]">school</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary">ABC University</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Urban Research Dept.</p>
+</div>
+<!-- Metrics A -->
+<div class="flex flex-col">
+<!-- Match Score -->
+<div class="h-16 flex items-center justify-between md:justify-center px-6 border-b border-outline-variant bg-secondary-container/20 relative">
+<span class="md:hidden text-label-sm font-label-sm text-on-surface-variant">Match Score</span>
+<div class="flex items-center gap-2">
+<span class="text-body-lg font-body-lg font-bold text-on-secondary-container">92%</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+</div>
+</div>
+<!-- Domain Expertise -->
+<div class="h-16 flex items-center justify-between md:justify-center px-6 border-b border-outline-variant relative">
+<span class="md:hidden text-label-sm font-label-sm text-on-surface-variant">Domain Expertise</span>
+<span class="text-body-lg font-body-lg text-primary">85%</span>
+</div>
+<!-- Past Success Rate -->
+<div class="h-16 flex items-center justify-between md:justify-center px-6 border-b border-outline-variant bg-secondary-container/20 relative">
+<span class="md:hidden text-label-sm font-label-sm text-on-surface-variant">Past Success Rate</span>
+<div class="flex items-center gap-2">
+<span class="text-body-lg font-body-lg font-bold text-on-secondary-container">88%</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+</div>
+</div>
+<!-- Key Faculty Mentors -->
+<div class="h-16 flex items-center justify-between md:justify-center px-6 border-b border-outline-variant relative">
+<span class="md:hidden text-label-sm font-label-sm text-on-surface-variant">Key Faculty Mentors</span>
+<span class="text-body-md font-body-md text-primary">Dr. S. Smith, Prof. A. Lee</span>
+</div>
+<!-- Avg Response Time -->
+<div class="h-16 flex items-center justify-between md:justify-center px-6 relative bg-secondary-container/20">
+<span class="md:hidden text-label-sm font-label-sm text-on-surface-variant">Avg. Response Time</span>
+<div class="flex items-center gap-2">
+<span class="text-body-lg font-body-lg font-bold text-on-secondary-container">12 Hours</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- University B -->
+<div class="flex-1 relative bg-surface-container-lowest">
+<div class="p-6 h-[180px] border-b border-outline-variant flex flex-col justify-between items-center text-center relative z-10">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest border border-outline-variant mb-4 overflow-hidden flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[32px]">science</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary">State Tech Inst.</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Civic Innovation Lab</p>
+</div>
+<!-- Metrics B -->
+<div class="flex flex-col">
+<!-- Match Score -->
+<div class="h-16 flex items-center justify-between md:justify-center px-6 border-b border-outline-variant relative">
+<span class="md:hidden text-label-sm font-label-sm text-on-surface-variant">Match Score</span>
+<span class="text-body-lg font-body-lg text-primary">78%</span>
+</div>
+<!-- Domain Expertise -->
+<div class="h-16 flex items-center justify-between md:justify-center px-6 border-b border-outline-variant bg-secondary-container/20 relative">
+<span class="md:hidden text-label-sm font-label-sm text-on-surface-variant">Domain Expertise</span>
+<div class="flex items-center gap-2">
+<span class="text-body-lg font-body-lg font-bold text-on-secondary-container">94%</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+</div>
+</div>
+<!-- Past Success Rate -->
+<div class="h-16 flex items-center justify-between md:justify-center px-6 border-b border-outline-variant relative">
+<span class="md:hidden text-label-sm font-label-sm text-on-surface-variant">Past Success Rate</span>
+<span class="text-body-lg font-body-lg text-primary">81%</span>
+</div>
+<!-- Key Faculty Mentors -->
+<div class="h-16 flex items-center justify-between md:justify-center px-6 border-b border-outline-variant bg-secondary-container/20 relative">
+<span class="md:hidden text-label-sm font-label-sm text-on-surface-variant">Key Faculty Mentors</span>
+<div class="flex items-center gap-2">
+<span class="text-body-md font-body-md font-bold text-on-secondary-container text-center">Prof. K. Jones (Lead)</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+</div>
+</div>
+<!-- Avg Response Time -->
+<div class="h-16 flex items-center justify-between md:justify-center px-6 relative">
+<span class="md:hidden text-label-sm font-label-sm text-on-surface-variant">Avg. Response Time</span>
+<span class="text-body-lg font-body-lg text-primary">24 Hours</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar for Mobile (Hidden on Desktop) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface border-t border-outline-variant pb-safe shadow-md">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-label-sm font-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-label-sm font-label-sm">Report</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary font-bold active:bg-surface-container-high transition-transform duration-150 scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">layers</span>
+<span class="text-label-sm font-label-sm">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-label-sm font-label-sm">Alerts</span>
+</a>
+</nav>
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (19)</span>
+    </button>
+  </div>
+  
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  <div id="civic-pulse-screen-navigator" class="fixed bottom-4 right-4 z-[9999] font-sans">
+    <div id="screen-nav-menu" class="hidden mb-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 p-3 w-64 max-h-80 overflow-y-auto transition-all">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-gray-100">
+        <span class="text-xs font-bold text-gray-800 uppercase tracking-wider">All 21 Screens</span>
+        <a href="../index.html" class="text-[11px] text-blue-600 hover:underline font-medium">Index ↗</a>
+      </div>
+      <div class="space-y-0.5">
+        
+    <a href="landing_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Landing Page
+    </a>
+  
+    <a href="login.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Sign In / Login
+    </a>
+  
+    <a href="signup.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Register / Sign Up
+    </a>
+  
+    <a href="citizen_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen Home Feed
+    </a>
+  
+    <a href="mobile_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Mobile Home Feed
+    </a>
+  
+    <a href="report_a_problem_flow.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Report a Problem
+    </a>
+  
+    <a href="duplicate_problem_detection.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Duplicate Detection
+    </a>
+  
+    <a href="problem_details_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Problem Details
+    </a>
+  
+    <a href="university_recommendations.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Recommendations
+    </a>
+  
+    <a href="recommendation_detail_view.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Recommendation Details
+    </a>
+  
+    <a href="match_evidence_details.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Match Evidence
+    </a>
+  
+    <a href="university_comparison.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors bg-black text-white font-bold">
+      University Comparison
+    </a>
+  
+    <a href="partner_directory.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Partner Directory
+    </a>
+  
+    <a href="government_command_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Command Center
+    </a>
+  
+    <a href="government_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Dashboard
+    </a>
+  
+    <a href="district_insights_map.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      District Insights Map
+    </a>
+  
+    <a href="ai_analysis_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      AI Analysis Center
+    </a>
+  
+    <a href="impact_tracking_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Impact Tracking
+    </a>
+  
+    <a href="solution_impact_report.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Solution Impact Report
+    </a>
+  
+    <a href="citizen_government_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen-Gov Ecosystem
+    </a>
+  
+    <a href="innovation_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Innovation Ecosystem
+    </a>
+  
+      </div>
+    </div>
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (21)</span>
+    </button>
+  </div>
+  
+</body></html>

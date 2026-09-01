@@ -1,0 +1,461 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Problem Details - Civic Pulse</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f7f9fb",
+                    "on-secondary-fixed": "#002113",
+                    "primary": "#000000",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#004395",
+                    "outline": "#76777d",
+                    "on-surface": "#191c1e",
+                    "on-primary-fixed": "#131b2e",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "tertiary-fixed": "#d8e2ff",
+                    "on-primary-container": "#7c839b",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#131b2e",
+                    "tertiary": "#000000",
+                    "surface-tint": "#565e74",
+                    "surface-dim": "#d8dadc",
+                    "on-secondary-fixed-variant": "#005236",
+                    "secondary": "#006c49",
+                    "on-background": "#191c1e",
+                    "inverse-primary": "#bec6e0",
+                    "inverse-surface": "#2d3133",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#6ffbbe",
+                    "secondary-container": "#6cf8bb",
+                    "on-tertiary-container": "#3980f4",
+                    "background": "#f7f9fb",
+                    "surface-container-low": "#f2f4f6",
+                    "surface": "#f7f9fb",
+                    "surface-container-high": "#e6e8ea",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-secondary-container": "#00714d",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-container": "#001a42",
+                    "outline-variant": "#c6c6cd",
+                    "surface-container": "#eceef0",
+                    "on-tertiary-fixed": "#001a42",
+                    "on-surface-variant": "#45464d",
+                    "primary-fixed": "#dae2fd",
+                    "secondary-fixed-dim": "#4edea3",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "margin-desktop": "48px",
+                    "unit": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md">
+<!-- Subpage Header (Task-Focused, Nav Suppressed) -->
+<header class="bg-surface-container-lowest border-b border-outline-variant sticky top-0 z-40">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between">
+<a class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer group" href="citizen_home_feed.html">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">arrow_back</span>
+<span class="font-label-md text-label-md">Back to Explore</span>
+</a>
+<a href="landing_page.html" class="font-headline-md text-headline-md text-primary font-bold hidden md:block hover:opacity-80">Civic Pulse</a>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Primary Content -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Header & Image -->
+<article class="flex flex-col gap-6">
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm inline-flex items-center gap-1">
+<span class="material-symbols-outlined !text-[16px] icon-fill">water_drop</span> Water &amp; Sanitation
+                        </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Reported 12 days ago</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-display-lg md:text-display-lg text-primary">Irregular Water Supply in Village X</h1>
+<div class="w-full aspect-video rounded-xl overflow-hidden border border-outline-variant bg-surface-container-high relative">
+<img class="w-full h-full object-cover" data-alt="A compelling, high-quality documentary-style photograph illustrating the irregular water supply issue in a rural village setting. The scene features dry, cracked earth and a rustic communal water pump that appears non-functional. Several empty plastic water containers and terracotta pots are clustered nearby under harsh, bright daylight, casting strong shadows. The overall mood is serious and arid, highlighting the civic challenge. The visual style is realistic, well-lit, and aligns with a professional civic-tech platform aesthetic, utilizing a warm, sun-baked color palette contrasted against clear skies." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9-bt8cYP3u8ANyi7u8UoCaoqT-Q6vHOemXEO9Cil99J-2ltWceA9N1ujA7zJKxYeqyfZwUkODVlGn-ZtYDhyF8ZJQ_nKb5NEc9Ic2uvpxv14amsgXnq1sMG2r-DHNRBoCvnzAwhxyMTZ3etXeKP4zlkvbkDZg7-VjbE5tGqO53ZO8nM-nL8Aj1_4mLSEBgt3ckqyCLC9suZaG4ZAEqCZHfh2UPc_iST8EWh_Mup5oo6mEflOz9JTl">
+<div class="absolute bottom-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-2 rounded-lg border border-outline-variant shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant !text-[18px]">visibility</span>
+<span class="font-label-sm text-label-sm text-on-surface">1.2k Views</span>
+</div>
+</div>
+<div class="prose max-w-none text-on-surface-variant font-body-lg text-body-lg">
+<p class="mb-4">Over the past three months, the primary water supply pipeline serving the eastern and southern sectors of Village X has experienced severe irregularities. Residents report that water pressure drops significantly during peak morning hours, and often, the supply stops entirely for periods exceeding 48 hours.</p>
+<p class="">This disruption heavily impacts daily routines, agricultural micro-activities, and sanitation. Previous maintenance requests have noted potential blockages or pressure valve failures in the main reservoir line connecting to the village intake station. Immediate investigation and structural repair are required to restore reliable service.</p>
+</div>
+</article>
+<hr class="border-outline-variant">
+<!-- Community Collaboration Section -->
+<section class="flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-primary">Community Input</h2>
+<span class="font-label-md text-label-md text-on-surface-variant">24 Comments</span>
+</div><div class="flex border-b border-outline-variant gap-6">
+<button class="pb-2 border-b-2 border-primary text-primary font-label-md text-label-md">Discussion</button>
+<button class="pb-2 text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors">Suggestions</button>
+<button class="pb-2 text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors">Evidence</button>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Comment 1 -->
+<div class="flex gap-4 p-4 rounded-xl bg-surface-container-lowest border border-outline-variant">
+<div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center flex-shrink-0 font-label-md text-label-md">P</div>
+<div class="flex flex-col gap-1 w-full">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary">Priya S.</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2 days ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">The situation is definitely worse in the evening. We wait until 8 PM and still nothing comes through the taps. It's affecting the children's ability to clean up after school.</p>
+</div>
+</div>
+<!-- Comment 2 (Team Response) -->
+<div class="flex gap-4 p-4 rounded-xl bg-primary-fixed/20 border border-primary-fixed-dim ml-8 relative">
+<div class="absolute -left-4 top-8 w-4 h-[1px] bg-outline-variant"></div>
+<div class="absolute -left-4 top-0 bottom-8 w-[1px] bg-outline-variant"></div>
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined !text-[18px]">school</span>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-primary">Student Team</span>
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-label-sm text-label-sm text-[10px]">Resolver</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1 day ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Thank you for this detail, Priya. We will specifically include evening flow-rate testing in our upcoming prototype deployment phase to address this variance.</p>
+</div>
+</div>
+</div>
+<!-- Add Comment -->
+<div class="flex gap-4 mt-2">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+<div class="flex-grow flex gap-2">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:border-tertiary-container focus:ring-2 focus:ring-tertiary-container/20 transition-all" placeholder="Add a constructive update..." type="text">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-xl font-label-md text-label-md hover:bg-primary/90 transition-colors">Post</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Sidebar & Meta -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Action Buttons (Sticky on Desktop) -->
+<div class="flex flex-col gap-3 sticky top-24 z-10">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-xl flex items-center justify-center gap-2 shadow-sm hover:shadow-md transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined icon-fill">waving_hand</span>
+                        I'm Affected Too
+                    </button>
+<a href="government_command_center.html" class="w-full bg-surface-container-lowest border-2 border-outline-variant text-primary font-label-md text-label-md py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-surface-container-low transition-all font-bold">
+<span class="material-symbols-outlined">notifications</span>
+Follow Updates & Activity
+</a>
+</div>
+<!-- Status Tracking Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-6">
+<h3 class="font-headline-md text-headline-md text-primary">Resolution Status</h3>
+<div class="relative pl-3 flex flex-col gap-8">
+<!-- Connecting Line -->
+<div class="absolute left-[19px] top-4 bottom-4 w-[2px] bg-surface-variant z-0"></div>
+<!-- Step 1: Reported -->
+<div class="relative z-10 flex items-start gap-4">
+<div class="w-4 h-4 rounded-full bg-secondary-container border-2 border-surface-container-lowest mt-1 shadow-sm"></div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Reported</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Initial problem logged.</p>
+</div>
+</div>
+<!-- Step 2: Validated -->
+<div class="relative z-10 flex items-start gap-4">
+<div class="w-4 h-4 rounded-full bg-secondary-container border-2 border-surface-container-lowest mt-1 shadow-sm"></div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Validated</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Confirmed by local authorities.</p>
+</div>
+</div>
+<!-- Step 3: Assigned -->
+<div class="relative z-10 flex items-start gap-4">
+<div class="w-4 h-4 rounded-full bg-secondary-container border-2 border-surface-container-lowest mt-1 shadow-sm"></div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">University Assigned</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Partner institution engaged.</p>
+</div>
+</div>
+<!-- Step 4: Prototype (Active) -->
+<div class="relative z-10 flex items-start gap-4">
+<div class="w-4 h-4 rounded-full bg-secondary-container border-2 border-surface-container-lowest mt-1 shadow-sm"></div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Industry Partnered</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">AquaTech Solutions joined.</p>
+</div>
+</div><div class="relative z-10 flex items-start gap-4 group">
+<div class="w-4 h-4 rounded-full bg-tertiary-container border-2 border-surface-container-lowest mt-1 shadow-sm relative">
+<div class="absolute inset-0 rounded-full bg-tertiary-container animate-ping opacity-75"></div>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary font-bold">Prototype Design</h4>
+<p class="font-label-sm text-label-sm text-on-tertiary-container">Active: Developing bypass valve system.</p>
+</div>
+</div>
+<!-- Step 5: Testing (Pending) -->
+<div class="relative z-10 flex items-start gap-4 opacity-50">
+<div class="w-4 h-4 rounded-full bg-surface-variant border-2 border-surface-container-lowest mt-1"></div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface-variant">Testing</h4>
+</div>
+</div>
+<!-- Step 6: Solved (Pending) -->
+<div class="relative z-10 flex items-start gap-4 opacity-50">
+<div class="w-4 h-4 rounded-full bg-surface-variant border-2 border-surface-container-lowest mt-1"></div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface-variant">Deployment &amp; Solved</h4>
+</div>
+</div>
+</div>
+</div>
+<!-- Collaboration Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-5">
+<div class="flex items-center gap-3 mb-1">
+<span class="material-symbols-outlined text-tertiary-container !text-[28px]">engineering</span>
+<h3 class="font-headline-md text-headline-md text-primary">Current Solution</h3>
+</div>
+<div class="flex flex-col gap-3">
+<div class="font-label-md text-label-md text-primary text-lg">Smart Water Monitoring &amp; Irrigation System</div>
+<div class="p-3 bg-surface-container-low rounded-lg">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-2 uppercase tracking-wider">Latest Update</p>
+<p class="font-body-md text-body-md text-on-surface">The student team completed the first prototype of the bypass valve system and is preparing for field testing.</p>
+</div>
+<div class="flex flex-col gap-1">
+<a href="university_recommendations.html" class="font-body-md text-body-md text-on-surface-variant hover:text-primary flex items-center gap-2 font-medium">
+<span class="material-symbols-outlined !text-[16px]">school</span> ABC University (View Matched Proposals →)
+</a>
+<div class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined !text-[16px]">person</span> Faculty Mentor: Dr. ABC
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined !text-[16px]">groups</span> Student Team: 5 Members
+</div>
+</div>
+</div>
+<div class="mt-2">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Project Progress</span>
+<span class="font-label-md text-label-md text-primary">72%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2 overflow-hidden">
+<div class="bg-tertiary-container h-full rounded-full" style="width: 72%"></div>
+</div>
+</div>
+</div><div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-container !text-[24px]">handshake</span>
+<h3 class="font-label-md text-label-md text-primary">Industry Partners</h3>
+</div>
+<div class="flex items-center gap-3 p-3 border border-outline-variant rounded-lg">
+<div class="w-10 h-10 bg-surface-variant rounded flex items-center justify-center font-bold text-primary">AT</div>
+<div>
+<a href="partner_directory.html" class="font-label-md text-label-md text-primary hover:text-secondary font-bold">AquaTech Solutions →</a>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Technical Advisor</div>
+</div>
+</div>
+</div>
+<!-- Location Map Card -->
+<a href="district_insights_map.html" class="block bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col group hover:border-primary transition-colors">
+<div class="p-4 border-b border-outline-variant flex items-center gap-2 bg-surface-container-low">
+<span class="material-symbols-outlined text-on-surface-variant">location_on</span>
+<h3 class="font-label-md text-label-md text-primary group-hover:text-secondary">Location (View in District Map →)</h3>
+</div>
+<div class="w-full h-48 bg-surface-variant relative">
+<img class="w-full h-full object-cover grayscale opacity-90 mix-blend-multiply" data-alt="A clean, minimalist vector-style map interface showing the geographical location of Village X. The map should use a light color scheme primarily featuring soft grays, whites, and subtle blues for water bodies. A prominent, modern pin marker in a dark navy or primary brand color should indicate the exact location of the issue. The map should look like a functional, interactive UI element from a civic application, devoid of unnecessary clutter or labels." data-location="Village X" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHpeyDm__qKQJZ_rxAcB1izuKXuCiahzBQsydnkTomYr6tFd205S9YAr31leEE39t5OUI_2HHYSHILKXGs-5f4uxaYZy0hlWT3AHfKjeNONq4KWW2KD6G2wOm5AMRzUvH6hYrlKNJRk0Aso6-AbzfEcoBWCENJYQCPEbH3E8d0CrDJ2ZXMWulN2T02KXZLjEGc0eBdbBSL-j344dtfImblbyWakIA5RfrPqmSpnJUdrxcicAvY1urz">
+</div>
+</div>
+</div>
+</div>
+</main>
+
+
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (19)</span>
+    </button>
+  </div>
+  
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  <div id="civic-pulse-screen-navigator" class="fixed bottom-4 right-4 z-[9999] font-sans">
+    <div id="screen-nav-menu" class="hidden mb-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 p-3 w-64 max-h-80 overflow-y-auto transition-all">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-gray-100">
+        <span class="text-xs font-bold text-gray-800 uppercase tracking-wider">All 21 Screens</span>
+        <a href="../index.html" class="text-[11px] text-blue-600 hover:underline font-medium">Index ↗</a>
+      </div>
+      <div class="space-y-0.5">
+        
+    <a href="landing_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Landing Page
+    </a>
+  
+    <a href="login.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Sign In / Login
+    </a>
+  
+    <a href="signup.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Register / Sign Up
+    </a>
+  
+    <a href="citizen_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen Home Feed
+    </a>
+  
+    <a href="mobile_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Mobile Home Feed
+    </a>
+  
+    <a href="report_a_problem_flow.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Report a Problem
+    </a>
+  
+    <a href="duplicate_problem_detection.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Duplicate Detection
+    </a>
+  
+    <a href="problem_details_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors bg-black text-white font-bold">
+      Problem Details
+    </a>
+  
+    <a href="university_recommendations.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Recommendations
+    </a>
+  
+    <a href="recommendation_detail_view.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Recommendation Details
+    </a>
+  
+    <a href="match_evidence_details.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Match Evidence
+    </a>
+  
+    <a href="university_comparison.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Comparison
+    </a>
+  
+    <a href="partner_directory.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Partner Directory
+    </a>
+  
+    <a href="government_command_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Command Center
+    </a>
+  
+    <a href="government_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Dashboard
+    </a>
+  
+    <a href="district_insights_map.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      District Insights Map
+    </a>
+  
+    <a href="ai_analysis_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      AI Analysis Center
+    </a>
+  
+    <a href="impact_tracking_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Impact Tracking
+    </a>
+  
+    <a href="solution_impact_report.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Solution Impact Report
+    </a>
+  
+    <a href="citizen_government_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen-Gov Ecosystem
+    </a>
+  
+    <a href="innovation_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Innovation Ecosystem
+    </a>
+  
+      </div>
+    </div>
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (21)</span>
+    </button>
+  </div>
+  
+</body></html>

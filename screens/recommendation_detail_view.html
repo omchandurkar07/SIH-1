@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recommendation Details - Civic Pulse</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter and Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with custom config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#bec6e0",
+                        "surface-container": "#eceef0",
+                        "surface-container-highest": "#e0e3e5",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-container": "#001a42",
+                        "on-secondary-fixed": "#002113",
+                        "primary": "#000000",
+                        "surface-variant": "#e0e3e5",
+                        "background": "#f7f9fb",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c6c6cd",
+                        "on-tertiary-container": "#3980f4",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface-container-high": "#e6e8ea",
+                        "on-surface": "#191c1e",
+                        "on-secondary-container": "#00714d",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#dae2fd",
+                        "secondary-container": "#6cf8bb",
+                        "on-tertiary-fixed": "#001a42",
+                        "surface-bright": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ba1a1a",
+                        "secondary": "#006c49",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "tertiary-fixed": "#d8e2ff",
+                        "outline": "#76777d",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-tint": "#565e74",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-fixed": "#131b2e",
+                        "surface": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "surface-container-low": "#f2f4f6",
+                        "on-surface-variant": "#45464d",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "primary-container": "#131b2e",
+                        "tertiary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "margin-desktop": "48px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .bento-col-4 { grid-column: span 12; }
+        .bento-col-8 { grid-column: span 12; }
+        
+        @media (min-width: 768px) {
+            .bento-col-4 { grid-column: span 4; }
+            .bento-col-8 { grid-column: span 8; }
+            .bento-col-6 { grid-column: span 6; }
+        }
+        
+        .progress-bar-bg {
+            background-color: #f2f4f6; /* surface-container-low */
+            border-radius: 999px;
+            overflow: hidden;
+            height: 8px;
+            width: 100%;
+        }
+        .progress-bar-fill {
+            background-color: #000000; /* primary */
+            height: 100%;
+            border-radius: 999px;
+        }
+        .progress-bar-fill.secondary {
+            background-color: #006c49; /* secondary */
+        }
+        
+        /* Subtle shadow for glassmorphism / clean look */
+        .glass-card {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            border-radius: 0.5rem; /* xl */
+            box-shadow: 0px 4px 12px rgba(15, 23, 42, 0.04);
+            padding: 24px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col md:flex-row font-body-md">
+<!-- SideNavBar (Desktop Navigation) - Suppressed as this is a specific detail/transactional view, 
+         but keeping top app bar with back button for navigation -->
+<!-- Top Navigation (Mobile & Desktop App Bar for Detail View) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface border-b border-outline-variant flat no shadows">
+<div class="flex items-center gap-4">
+<button aria-label="Go back" class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Recommendation Details</span>
+<span class="text-headline-md font-headline-md font-bold text-primary">ABC University Match</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center gap-2 border border-outline px-4 py-2 rounded-lg text-primary hover:bg-surface-container-low transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-lg">compare_arrows</span>
+                Compare Universities
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 pb-32 md:pb-margin-desktop px-margin-mobile md:px-margin-desktop pt-8 w-full max-w-container-max mx-auto overflow-y-auto">
+<div class="mb-8">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary text-3xl">psychology</span>
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary">AI Match Analysis</h1>
+</div>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-3xl">
+                Detailed breakdown for addressing 'Irrigation water wastage' with ABC University's academic and practical expertise.
+            </p>
+</div>
+<div class="bento-grid">
+<!-- Column 1: University Profile & Match Breakdown -->
+<div class="bento-col-4 flex flex-col gap-gutter">
+<!-- University Profile Card -->
+<div class="glass-card flex flex-col gap-6"><div class="flex items-start gap-4"><div class="w-16 h-16 rounded-lg bg-surface-container-low flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-4xl text-primary">school</span></div><div><h2 class="text-headline-md font-headline-md text-primary mb-1">ABC University</h2><p class="text-body-md font-body-md text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> Ranchi</p></div></div><div class="space-y-4"><div><h3 class="text-label-md font-label-md text-on-surface-variant mb-2 uppercase tracking-wider">Key Departments</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-surface-container-low border border-outline-variant rounded-full text-label-sm font-label-sm text-primary">Civil Engineering</span><span class="px-3 py-1 bg-surface-container-low border border-outline-variant rounded-full text-label-sm font-label-sm text-primary">Computer Science</span><span class="px-3 py-1 bg-surface-container-low border border-outline-variant rounded-full text-label-sm font-label-sm text-primary">Environmental Science</span></div></div><div><h3 class="text-label-md font-label-md text-on-surface-variant mb-2 uppercase tracking-wider">Research Focus</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-primary-fixed border border-primary-fixed-dim rounded-full text-label-sm font-label-sm text-on-primary-fixed">Water Management</span><span class="px-3 py-1 bg-primary-fixed border border-primary-fixed-dim rounded-full text-label-sm font-label-sm text-on-primary-fixed">Smart Agriculture</span><span class="px-3 py-1 bg-primary-fixed border border-primary-fixed-dim rounded-full text-label-sm font-label-sm text-on-primary-fixed">IoT</span></div></div><div><h3 class="text-label-md font-label-md text-on-surface-variant mb-2 uppercase tracking-wider">Facilities</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-surface-container-low border border-outline-variant rounded-full text-label-sm font-label-sm text-primary">IoT Laboratory</span><span class="px-3 py-1 bg-surface-container-low border border-outline-variant rounded-full text-label-sm font-label-sm text-primary">Water Quality Testing Lab</span></div></div></div></div>
+<!-- Match Breakdown Card -->
+<div class="glass-card flex flex-col gap-6">
+<div class="flex justify-between items-center border-b border-outline-variant pb-4">
+<h2 class="text-headline-md font-headline-md text-primary">Match Score</h2>
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center border-4 border-secondary-fixed">
+<span class="text-headline-md font-headline-md font-bold text-on-secondary-container">94%</span>
+</div>
+</div>
+<div class="space-y-5">
+<!-- Breakdown Item 1 -->
+<div>
+<div class="flex justify-between text-label-sm font-label-sm mb-2">
+<span class="text-on-surface">Problem Expertise</span>
+<span class="text-primary font-bold">30%</span>
+</div>
+<div class="progress-bar-bg">
+<div class="progress-bar-fill" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Breakdown Item 2 -->
+<div>
+<div class="flex justify-between text-label-sm font-label-sm mb-2">
+<span class="text-on-surface">Previous Projects</span>
+<span class="text-primary font-bold">30%</span>
+</div>
+<div class="progress-bar-bg">
+<div class="progress-bar-fill" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Breakdown Item 3 -->
+<div>
+<div class="flex justify-between text-label-sm font-label-sm mb-2">
+<span class="text-on-surface">Faculty Expertise</span>
+<span class="text-primary font-bold">20%</span>
+</div>
+<div class="progress-bar-bg">
+<div class="progress-bar-fill secondary" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Breakdown Item 4 -->
+<div>
+<div class="flex justify-between text-label-sm font-label-sm mb-2">
+<span class="text-on-surface">Research Alignment</span>
+<span class="text-primary font-bold">10%</span>
+</div>
+<div class="progress-bar-bg">
+<div class="progress-bar-fill" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Breakdown Item 5 -->
+<div>
+<div class="flex justify-between text-label-sm font-label-sm mb-2">
+<span class="text-on-surface">Historical Success</span>
+<span class="text-primary font-bold">10%</span>
+</div>
+<div class="progress-bar-bg">
+<div class="progress-bar-fill" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 2: Explanation, Projects, Faculty -->
+<div class="bento-col-8 flex flex-col gap-gutter">
+<!-- AI Explanation -->
+<div class="glass-card bg-surface-bright border-l-4 border-l-primary relative overflow-hidden">
+<!-- Subtle background pattern or color hint for AI section -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-fixed opacity-20 rounded-bl-full -mr-8 -mt-8 pointer-events-none"></div>
+<div class="flex items-start gap-4 relative z-10">
+<span class="material-symbols-outlined text-primary text-3xl mt-1">auto_awesome</span>
+<div>
+<h3 class="text-label-md font-label-md text-primary mb-2 uppercase tracking-wider">AI Rationale</h3>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed">
+                                ABC University is highly recommended because it demonstrates <span class="font-bold">strong expertise in water management and IoT</span>. The institution has previously developed two highly relevant, successful projects directly related to smart irrigation and rural water monitoring, making them uniquely positioned to tackle current 'Irrigation water wastage' problems effectively.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Previous Relevant Projects (KEY FEATURE) -->
+<div class="glass-card flex flex-col gap-6">
+<div class="flex items-center gap-2 border-b border-outline-variant pb-4">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant">account_tree</span>
+<h2 class="text-headline-md font-headline-md text-primary">Previous Relevant Projects</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Project 1 -->
+<div class="border border-outline-variant rounded-xl p-5 hover:bg-surface-container-low transition-colors group cursor-pointer relative overflow-hidden">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-secondary-container text-on-secondary-container text-label-sm font-label-sm px-2 py-1 rounded">92% Relevance</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">2025</span>
+</div>
+<h3 class="text-body-lg font-body-lg font-semibold text-primary mb-2 group-hover:text-on-tertiary-container transition-colors">Smart Irrigation System</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4 line-clamp-2">
+                                IoT-based automated soil moisture sensing network.
+                            </p>
+<div class="mt-auto bg-surface border border-outline-variant rounded-lg p-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">trending_down</span>
+<span class="text-label-sm font-label-sm text-on-surface font-medium">Reduced water consumption by 28%</span>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="border border-outline-variant rounded-xl p-5 hover:bg-surface-container-low transition-colors group cursor-pointer relative overflow-hidden">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-surface-container-high text-on-surface text-label-sm font-label-sm px-2 py-1 rounded">87% Relevance</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">2024</span>
+</div>
+<h3 class="text-body-lg font-body-lg font-semibold text-primary mb-2 group-hover:text-on-tertiary-container transition-colors">Rural Water Monitoring</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4 line-clamp-2">
+                                Low-cost sensor deployment for community water tanks.
+                            </p>
+<div class="mt-auto bg-surface border border-outline-variant rounded-lg p-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">done_all</span>
+<span class="text-label-sm font-label-sm text-on-surface font-medium">Deployed successfully across 3 villages</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Faculty Expertise -->
+<div class="glass-card flex flex-col gap-6">
+<div class="flex items-center gap-2 border-b border-outline-variant pb-4">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant">engineering</span>
+<h2 class="text-headline-md font-headline-md text-primary">Key Faculty Expertise</h2>
+</div>
+<div class="flex items-center p-4 border border-outline-variant rounded-xl bg-surface-container-lowest">
+<div class="w-12 h-12 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center mr-4 flex-shrink-0">
+<span class="text-body-lg font-bold">XS</span>
+</div>
+<div class="flex-1">
+<h3 class="text-body-lg font-body-lg font-semibold text-primary">Dr. XYZ Sharma</h3>
+<p class="text-label-md font-label-md text-on-surface-variant">Department of Civil Engineering</p>
+</div>
+<div class="text-right">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span class="text-label-sm font-label-sm font-bold">4 Relevant Projects</span>
+</div>
+</div>
+</div>
+</div><div class="glass-card flex flex-col gap-6"><div class="flex items-center gap-2 border-b border-outline-variant pb-4"><span class="material-symbols-outlined text-2xl text-on-surface-variant">handshake</span><h2 class="text-headline-md font-headline-md text-primary">Industry Support</h2></div><div class="flex items-center p-4 border border-outline-variant rounded-xl bg-surface-container-lowest"><div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center mr-4 flex-shrink-0"><span class="material-symbols-outlined text-on-secondary-container">business</span></div><div class="flex-1"><h3 class="text-body-lg font-body-lg font-semibold text-primary">AquaTech Solutions</h3><p class="text-label-md font-label-md text-on-surface-variant">Recommended Partner</p></div><div class="text-right"><div class="bg-secondary-container text-on-secondary-container text-label-sm font-bold px-2 py-1 rounded">89% Match</div></div></div></div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Fixed) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant p-4 md:px-margin-desktop z-40 flex justify-center pb-safe">
+<div class="w-full max-w-container-max flex flex-col md:flex-row justify-end items-center gap-4">
+<button class="w-full md:w-auto px-6 py-3 border border-outline text-on-surface rounded-lg hover:bg-surface-container-low transition-colors font-label-md text-label-md bg-transparent">
+                Review Manually
+            </button>
+<button class="w-full md:w-auto px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-surface-container-low transition-colors font-label-md text-label-md bg-transparent md:hidden">
+                Compare Universities
+            </button>
+<button class="w-full md:w-auto px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-surface-container-low transition-colors font-label-md text-label-md bg-transparent flex items-center justify-center gap-2"><span class="material-symbols-outlined text-sm">mail</span> Request Collaboration</button><button class="w-full md:w-auto px-8 py-3 bg-primary text-on-primary rounded-lg hover:bg-inverse-surface transition-colors font-label-md text-label-md shadow-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                Accept Recommendation
+            </button>
+</div>
+</div>
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (19)</span>
+    </button>
+  </div>
+  
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  <div id="civic-pulse-screen-navigator" class="fixed bottom-4 right-4 z-[9999] font-sans">
+    <div id="screen-nav-menu" class="hidden mb-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 p-3 w-64 max-h-80 overflow-y-auto transition-all">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-gray-100">
+        <span class="text-xs font-bold text-gray-800 uppercase tracking-wider">All 21 Screens</span>
+        <a href="../index.html" class="text-[11px] text-blue-600 hover:underline font-medium">Index ↗</a>
+      </div>
+      <div class="space-y-0.5">
+        
+    <a href="landing_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Landing Page
+    </a>
+  
+    <a href="login.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Sign In / Login
+    </a>
+  
+    <a href="signup.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Register / Sign Up
+    </a>
+  
+    <a href="citizen_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen Home Feed
+    </a>
+  
+    <a href="mobile_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Mobile Home Feed
+    </a>
+  
+    <a href="report_a_problem_flow.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Report a Problem
+    </a>
+  
+    <a href="duplicate_problem_detection.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Duplicate Detection
+    </a>
+  
+    <a href="problem_details_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Problem Details
+    </a>
+  
+    <a href="university_recommendations.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Recommendations
+    </a>
+  
+    <a href="recommendation_detail_view.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors bg-black text-white font-bold">
+      Recommendation Details
+    </a>
+  
+    <a href="match_evidence_details.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Match Evidence
+    </a>
+  
+    <a href="university_comparison.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Comparison
+    </a>
+  
+    <a href="partner_directory.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Partner Directory
+    </a>
+  
+    <a href="government_command_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Command Center
+    </a>
+  
+    <a href="government_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Dashboard
+    </a>
+  
+    <a href="district_insights_map.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      District Insights Map
+    </a>
+  
+    <a href="ai_analysis_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      AI Analysis Center
+    </a>
+  
+    <a href="impact_tracking_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Impact Tracking
+    </a>
+  
+    <a href="solution_impact_report.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Solution Impact Report
+    </a>
+  
+    <a href="citizen_government_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen-Gov Ecosystem
+    </a>
+  
+    <a href="innovation_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Innovation Ecosystem
+    </a>
+  
+      </div>
+    </div>
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (21)</span>
+    </button>
+  </div>
+  
+</body></html>

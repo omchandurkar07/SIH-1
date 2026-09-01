@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Solution Impact - Smart Irrigation System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-container": "#001a42",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed-variant": "#005236",
+                        "background": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c6c6cd",
+                        "on-surface": "#191c1e",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-background": "#191c1e",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-container": "#3980f4",
+                        "on-error": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "secondary-fixed": "#6ffbbe",
+                        "secondary-container": "#6cf8bb",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#131b2e",
+                        "surface": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed": "#001a42",
+                        "secondary": "#006c49",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container": "#eceef0",
+                        "on-primary-container": "#7c839b",
+                        "surface-container-high": "#e6e8ea",
+                        "inverse-primary": "#bec6e0",
+                        "tertiary-fixed": "#d8e2ff",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#000000",
+                        "surface-tint": "#565e74",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "primary-fixed": "#dae2fd",
+                        "on-secondary-container": "#00714d",
+                        "on-surface-variant": "#45464d",
+                        "primary": "#000000",
+                        "inverse-surface": "#2d3133",
+                        "outline": "#76777d"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "margin-desktop": "48px"
+                    },
+                    fontFamily: {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    fontSize: {
+                        "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "display-lg": ["48px", { lineHeight: "60px", letterSpacing: "-0.02em", fontWeight: "700" }]
+                    },
+                    boxShadow: {
+                        "soft-lift": "0px 4px 12px rgba(15, 23, 42, 0.08)"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F8FAFC; color: #191c1e; }
+        .stat-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .stat-card:hover { transform: translateY(-2px); box-shadow: 0px 4px 12px rgba(15, 23, 42, 0.08); }
+    </style>
+</head>
+<body class="font-body-md text-body-md min-h-screen pb-24 md:pb-0">
+<!-- TopNavBar -->
+<nav class="hidden md:flex items-center justify-between px-margin-desktop max-w-container-max mx-auto w-full h-16 bg-surface-container-lowest border-b border-outline-variant">
+<div class="font-headline-md text-headline-md font-bold text-primary">Civic Pulse</div>
+<div class="flex gap-gutter">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="government_dashboard.html">Dashboard</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="impact_tracking_dashboard.html">Impact</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="partner_directory.html">Partners</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="ai_analysis_center.html">Resources</a>
+</div>
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors duration-200">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors duration-200">account_circle</span>
+<a href="report_a_problem_flow.html" class="bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-full hover:bg-surface-tint transition-colors duration-200 ml-4 font-bold">Report Problem</a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12">
+<!-- Header -->
+<header class="mb-12 text-center md:text-left">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm mb-4">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                Completed Project
+            </div>
+<h1 class="font-display-lg text-display-lg text-primary mb-4">Smart Irrigation System</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">A joint initiative by ABC University &amp; AquaTech Solutions deployed on October 15, 2023.</p>
+</header>
+<!-- Hero Impact Metrics (Bento Grid) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-16">
+<div class="stat-card bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col justify-between h-40">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-secondary text-3xl">group</span>
+</div>
+<div>
+<div class="font-display-lg text-[36px] leading-[44px] font-bold text-primary">2,840</div>
+<div class="font-label-md text-label-md text-on-surface-variant mt-1">Farmers Benefited</div>
+</div>
+</div>
+<div class="stat-card bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col justify-between h-40">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-secondary text-3xl">water_drop</span>
+</div>
+<div>
+<div class="font-display-lg text-[36px] leading-[44px] font-bold text-secondary">28%</div>
+<div class="font-label-md text-label-md text-on-surface-variant mt-1">Water Usage Reduced</div>
+</div>
+</div>
+<div class="stat-card bg-secondary text-on-secondary border border-secondary rounded-xl p-6 flex flex-col justify-between h-40 md:col-span-2 lg:col-span-2">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-3xl">savings</span>
+</div>
+<div>
+<div class="font-display-lg text-[40px] leading-[48px] font-bold">184,000 L</div>
+<div class="font-label-md text-label-md opacity-90 mt-1">Water Saved / Month across 3 Villages</div>
+</div>
+</div>
+</section>
+<!-- Before & After Comparison -->
+<section class="mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-8">Impact Transformation</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Before -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="h-48 w-full relative">
+<img class="object-cover w-full h-full absolute inset-0" data-alt="A dry, dusty agricultural field showing signs of traditional, inefficient manual irrigation. The soil looks parched in places, with uneven watering evident. The scene is shot in harsh daylight, conveying a sense of struggle and resource wastage typical of outdated farming methods. The aesthetic is documentary-style, highlighting the need for modernization." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_We1G1rJllsMU6B7xiYieY4xAcLGGiE-b3ljAISZXC4vvePfRmLe6eRIAL2KTL0VowzWFkSfXRAWCeQ7yewN9SoJY0pjjufOFq-HaV5Q9v48-Nu5CDL7GCHlam86p8YIIxB3uvzr4xECeewKM13pIZVdNyyQP_IhC1UozHq6aGpnMscFd5imBrjh5BawwrJD2XoozehMqfKKY1FTiI0Vm4xVjjwwjrem1l2-ZgsTDFl-Zi77f0UzL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white font-headline-md text-headline-md">Before</div>
+</div>
+<div class="p-6">
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-error mt-0.5">cancel</span>
+<div>
+<div class="font-label-md text-label-md text-primary">Manual Irrigation</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">Labor-intensive watering processes reliant on estimates.</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-error mt-0.5">water_loss</span>
+<div>
+<div class="font-label-md text-label-md text-primary">Water Wastage</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">Significant runoff and over-watering due to lack of soil moisture data.</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- After -->
+<div class="bg-surface-container-lowest border-2 border-secondary rounded-xl overflow-hidden shadow-sm">
+<div class="h-48 w-full relative">
+<img class="object-cover w-full h-full absolute inset-0" data-alt="A lush, vibrant agricultural field demonstrating a modern smart irrigation system in action. Neatly aligned crops are receiving precise watering from automated drip lines. The scene is bathed in warm, golden-hour light, evoking a sense of growth, efficiency, and technological progress. The aesthetic is polished and optimistic, highlighting sustainable farming." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2nYYLvD7MDmqnz35JNLtQF1jyKGWzvpgsHf1XUQ3DsD5FBzhwiAD5dISwgYkuJYZMoJRDh3Vl4XB4k1eKcJ-QMfBn-tBXRx8nkP4oGD_JAFDiyRkes92z8qCmcOLAjsKXMClyw6W3nLxetMiJ2338yHDq5OPwNnIT1e5eFKcI1qXsGL1bv2aaLIKX9nCcaA5PcGEU1f8CrmdF0oWGyFauGUmvRGbf8My2PGoBqlIigFe6OM97e2lV"/>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white font-headline-md text-headline-md">After</div>
+</div>
+<div class="p-6 bg-secondary/5">
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-0.5">check_circle</span>
+<div>
+<div class="font-label-md text-label-md text-primary">Smart Irrigation</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">Automated watering schedules based on real-time soil and weather data.</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-0.5">monitoring</span>
+<div>
+<div class="font-label-md text-label-md text-primary">Real-time Monitoring</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-1">Farmers track moisture levels and system health via a mobile dashboard.</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Feedback & Outcomes -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-8 shadow-sm">
+<h3 class="font-headline-md text-headline-md text-primary mb-6">Measured Outcomes</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md text-primary">Crop Yield Increase</span>
+<span class="font-label-md text-label-md text-secondary">15%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 15%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md text-primary">Labor Hours Saved</span>
+<span class="font-label-md text-label-md text-secondary">40 hrs/week</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 40%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md text-primary">System Reliability</span>
+<span class="font-label-md text-label-md text-secondary">99.8%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 99.8%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-primary-container text-on-primary-container rounded-xl p-8 shadow-sm flex flex-col justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-[120px] absolute -right-6 -bottom-6 opacity-10">format_quote</span>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary text-3xl mb-4 block">format_quote</span>
+<p class="font-body-lg text-body-lg mb-6 italic">"The smart system took the guesswork out of farming for us. We save time, we save water, and our crops have never looked healthier. It's truly transformed our village."</p>
+<div class="font-label-md text-label-md text-white">Rajesh Kumar</div>
+<div class="font-label-sm text-label-sm opacity-80">Community Leader, Village 1</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-2 md:hidden bg-surface-container-lowest border-t border-outline-variant shadow-sm z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant tap-highlight-transparent active:bg-surface-container-high p-2 rounded-lg" href="citizen_home_feed.html">
+<span class="material-symbols-outlined text-[20px]">home</span>
+<span class="text-[10px] font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant tap-highlight-transparent active:bg-surface-container-high p-2 rounded-lg" href="impact_tracking_dashboard.html">
+<span class="material-symbols-outlined text-[20px]">list_alt</span>
+<span class="text-[10px] font-label-sm">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 tap-highlight-transparent" href="ai_analysis_center.html">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+<span class="text-[10px] font-label-sm font-bold">Insight</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant tap-highlight-transparent active:bg-surface-container-high p-2 rounded-lg" href="partner_directory.html">
+<span class="material-symbols-outlined text-[20px]">person</span>
+<span class="text-[10px] font-label-sm">Profile</span>
+</a>
+</nav>
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (19)</span>
+    </button>
+  </div>
+  
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  <div id="civic-pulse-screen-navigator" class="fixed bottom-4 right-4 z-[9999] font-sans">
+    <div id="screen-nav-menu" class="hidden mb-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 p-3 w-64 max-h-80 overflow-y-auto transition-all">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-gray-100">
+        <span class="text-xs font-bold text-gray-800 uppercase tracking-wider">All 21 Screens</span>
+        <a href="../index.html" class="text-[11px] text-blue-600 hover:underline font-medium">Index ↗</a>
+      </div>
+      <div class="space-y-0.5">
+        
+    <a href="landing_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Landing Page
+    </a>
+  
+    <a href="login.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Sign In / Login
+    </a>
+  
+    <a href="signup.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Register / Sign Up
+    </a>
+  
+    <a href="citizen_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen Home Feed
+    </a>
+  
+    <a href="mobile_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Mobile Home Feed
+    </a>
+  
+    <a href="report_a_problem_flow.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Report a Problem
+    </a>
+  
+    <a href="duplicate_problem_detection.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Duplicate Detection
+    </a>
+  
+    <a href="problem_details_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Problem Details
+    </a>
+  
+    <a href="university_recommendations.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Recommendations
+    </a>
+  
+    <a href="recommendation_detail_view.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Recommendation Details
+    </a>
+  
+    <a href="match_evidence_details.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Match Evidence
+    </a>
+  
+    <a href="university_comparison.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Comparison
+    </a>
+  
+    <a href="partner_directory.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Partner Directory
+    </a>
+  
+    <a href="government_command_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Command Center
+    </a>
+  
+    <a href="government_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Dashboard
+    </a>
+  
+    <a href="district_insights_map.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      District Insights Map
+    </a>
+  
+    <a href="ai_analysis_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      AI Analysis Center
+    </a>
+  
+    <a href="impact_tracking_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Impact Tracking
+    </a>
+  
+    <a href="solution_impact_report.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors bg-black text-white font-bold">
+      Solution Impact Report
+    </a>
+  
+    <a href="citizen_government_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen-Gov Ecosystem
+    </a>
+  
+    <a href="innovation_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Innovation Ecosystem
+    </a>
+  
+      </div>
+    </div>
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (21)</span>
+    </button>
+  </div>
+  
+</body></html>

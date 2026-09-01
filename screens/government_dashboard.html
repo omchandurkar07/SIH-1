@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Government Analytics Dashboard - Civic Pulse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary-fixed": "#002113",
+                        "primary": "#000000",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "outline": "#76777d",
+                        "on-surface": "#191c1e",
+                        "on-primary-fixed": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "tertiary-fixed": "#d8e2ff",
+                        "on-primary-container": "#7c839b",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "tertiary": "#000000",
+                        "surface-tint": "#565e74",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed-variant": "#005236",
+                        "secondary": "#006c49",
+                        "on-background": "#191c1e",
+                        "inverse-primary": "#bec6e0",
+                        "inverse-surface": "#2d3133",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#6ffbbe",
+                        "secondary-container": "#6cf8bb",
+                        "on-tertiary-container": "#3980f4",
+                        "background": "#f7f9fb",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary-container": "#00714d",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary-container": "#001a42",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container": "#eceef0",
+                        "on-tertiary-fixed": "#001a42",
+                        "on-surface-variant": "#45464d",
+                        "primary-fixed": "#dae2fd",
+                        "secondary-fixed-dim": "#4edea3",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "margin-desktop": "48px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<img alt="Civic Pulse Logo" class="h-8 w-8 object-contain hidden md:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIR_bp4D8htGaWs2ulHe7k6gq91rBE5xfrtJpZKHGvklpuEOoUKI1CaxZJZ93XORLsbsyun_qvD8deAFF5iOAoB1drNJbUORdzr2L7J1-x8tKQ3yjm0-xdW0MJ4qK7v0xWpQxwFL9Of90J6gBdzp-fcZHM2ax3Gcbz7PYBUxB7NKYqeFp34JYzumEIFtYIfl2n1xoxloxgGhYWZ12bAvAsMonxtpunpwNQ4QihgOsW9eDx1oDttXjl"/>
+<span class="text-headline-md font-headline-md font-bold text-primary">Civic Pulse</span>
+</div>
+<div class="hidden md:flex items-center gap-4">
+<!-- Search would go here if on right, JSON says left but layout dictates right side for dashboard view -->
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md flex items-center gap-2 hover:bg-surface-container-highest hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 600;">add</span>
+                Report Problem
+            </button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<div class="flex h-screen pt-16">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full w-64 bg-surface-container-lowest border-r border-outline-variant p-6 gap-unit fixed left-0 top-16 overflow-y-auto">
+<div class="mb-8">
+<div class="text-headline-md font-headline-md text-primary truncate">Overview</div>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="bg-secondary-container text-on-secondary-container rounded-xl font-bold px-4 py-3 flex items-center gap-3 transition-transform scale-95 opacity-80" href="#">
+<span class="material-symbols-outlined fill">home</span>
+<span class="text-label-md font-label-md">Overview</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="text-label-md font-label-md">Problems</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="text-label-md font-label-md">Projects</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-label-md font-label-md">Universities</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">business</span>
+<span class="text-label-md font-label-md">Industry</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-label-md font-label-md">AI Analysis</span>
+</a>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant flex flex-col gap-2">
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-label-md font-label-md">Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop overflow-y-auto pb-24 md:pb-margin-desktop">
+<div class="max-w-[1280px] mx-auto">
+<div class="mb-8">
+<h1 class="text-headline-lg font-headline-lg md:text-display-lg md:font-display-lg text-primary mb-2">Government Analytics Dashboard</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Real-time overview of civic issues, projects, and impact across regions.</p>
+</div>
+<!-- Overview Cards Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<!-- Total Problems -->
+<div class="bg-surface-container-lowest border border-outline rounded-xl p-6 shadow-[0_4px_12px_rgba(15,23,42,0.08)] flex flex-col">
+<div class="flex items-center gap-3 mb-4 text-on-surface-variant">
+<span class="material-symbols-outlined">assignment_late</span>
+<span class="text-label-md font-label-md">Total Problems</span>
+</div>
+<div class="text-display-lg font-display-lg text-primary mb-1">12,450</div>
+<div class="text-label-sm font-label-sm text-secondary flex items-center gap-1 mt-auto">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +5.2% this month
+                        </div>
+</div>
+<!-- Validated -->
+<div class="bg-surface-container-lowest border border-outline rounded-xl p-6 shadow-[0_4px_12px_rgba(15,23,42,0.08)] flex flex-col">
+<div class="flex items-center gap-3 mb-4 text-on-surface-variant">
+<span class="material-symbols-outlined">verified</span>
+<span class="text-label-md font-label-md">Validated</span>
+</div>
+<div class="text-display-lg font-display-lg text-secondary mb-1">8,230</div>
+<div class="w-full bg-surface-variant rounded-full h-1.5 mt-auto">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 66%"></div>
+</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mt-2 text-right">66% Resolution Rate</div>
+</div>
+<!-- University Projects -->
+<div class="bg-surface-container-lowest border border-outline rounded-xl p-6 shadow-[0_4px_12px_rgba(15,23,42,0.08)] flex flex-col">
+<div class="flex items-center gap-3 mb-4 text-on-surface-variant">
+<span class="material-symbols-outlined">school</span>
+<span class="text-label-md font-label-md">University Projects</span>
+</div>
+<div class="text-display-lg font-display-lg text-tertiary-container mb-1">1,420</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mt-auto">Active collaborations</div>
+</div>
+<!-- Solutions Deployed -->
+<div class="bg-surface-container-lowest border border-outline rounded-xl p-6 shadow-[0_4px_12px_rgba(15,23,42,0.08)] flex flex-col">
+<div class="flex items-center gap-3 mb-4 text-on-surface-variant">
+<span class="material-symbols-outlined">build_circle</span>
+<span class="text-label-md font-label-md">Solutions Deployed</span>
+</div>
+<div class="text-display-lg font-display-lg text-on-tertiary-container mb-1">186</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mt-auto">Impacting 50k+ citizens</div>
+</div>
+</div>
+<!-- Visuals Section (Map & Chart) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+<!-- Map Widget -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline rounded-xl p-6 shadow-[0_4px_12px_rgba(15,23,42,0.08)]">
+<h2 class="text-headline-md font-headline-md text-primary mb-4">Problem Hotspots (Jharkhand)</h2>
+<div class="w-full h-[400px] rounded-lg overflow-hidden border border-outline-variant relative bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A highly detailed, modern minimalist heat map of Jharkhand state in a light mode dashboard interface. The map uses subtle grays for landmass and outlines, overlaid with glowing emerald green and deep navy data points representing problem hotspots. The overall aesthetic is professional, clean, and data-heavy, evoking a sense of structural clarity and authoritative civic analytics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB71txl-z4j0dEotiHZpbjElDkTG3yPfw5NoEc5B-8-TNSNe_FbvwvErQpiNGRlmJS473snVe64MQPmFnenDG8JF2wxXGtOXoEbBnvkR1WvImxUTGfNO0yWGEiOvBGnkmJJcZgE0HMyRS47k9NXHA9ht8yQ_oDodyMLncXrDkBBt6Da1c1hClBOyfKpZgkts-3y32LuqKHJWmEh7n_-HYtyHfKjhKZUrOn4IdlEUkG7qDuMymTwPqhG"/>
+<!-- Overlay UI on Map -->
+<div class="absolute top-4 right-4 bg-surface-container-lowest p-3 rounded-lg border border-outline shadow-sm">
+<div class="text-label-sm font-label-sm text-on-surface-variant mb-2">Intensity</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="text-label-sm font-label-sm">High</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="w-3 h-3 rounded-full bg-primary-fixed-dim"></span>
+<span class="text-label-sm font-label-sm">Low</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bar Chart Widget -->
+<div class="bg-surface-container-lowest border border-outline rounded-xl p-6 shadow-[0_4px_12px_rgba(15,23,42,0.08)] flex flex-col">
+<h2 class="text-headline-md font-headline-md text-primary mb-6">Problems by Category</h2>
+<div class="flex flex-col gap-6 flex-grow justify-center">
+<!-- Infrastructure -->
+<div>
+<div class="flex justify-between text-label-md font-label-md mb-2 text-on-surface">
+<span>Infrastructure</span>
+<span>4,200</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-primary-container h-2 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<!-- Water/Sanitation -->
+<div>
+<div class="flex justify-between text-label-md font-label-md mb-2 text-on-surface">
+<span>Water &amp; Sanitation</span>
+<span>3,150</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-primary-container h-2 rounded-full" style="width: 65%"></div>
+</div>
+</div>
+<!-- Electricity -->
+<div>
+<div class="flex justify-between text-label-md font-label-md mb-2 text-on-surface">
+<span>Electricity</span>
+<span>2,800</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-primary-container h-2 rounded-full" style="width: 55%"></div>
+</div>
+</div>
+<!-- Healthcare -->
+<div>
+<div class="flex justify-between text-label-md font-label-md mb-2 text-on-surface">
+<span>Healthcare</span>
+<span>1,400</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-primary-container h-2 rounded-full" style="width: 30%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Impact Tracking -->
+<div class="bg-surface-container-lowest border border-outline rounded-xl p-6 shadow-[0_4px_12px_rgba(15,23,42,0.08)]">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-headline-md font-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">psychology</span>
+                            Social Impact Highlights
+                        </h2>
+<a class="text-label-md font-label-md text-on-tertiary-container hover:underline" href="#">View All Impact Reports</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Highlight Card 1 -->
+<div class="border border-outline-variant rounded-lg p-5 bg-surface flex gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container">water_drop</span>
+</div>
+<div>
+<h3 class="text-body-lg font-body-lg font-bold text-primary mb-1">Smart Irrigation Project</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-3">Deployed in 4 districts to optimize agricultural water usage.</p>
+<div class="flex gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-1">
+<div class="text-label-sm font-label-sm text-on-surface-variant">Water Reduction</div>
+<div class="text-label-md font-label-md text-secondary font-bold">30%</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-1">
+<div class="text-label-sm font-label-sm text-on-surface-variant">Benefited</div>
+<div class="text-label-md font-label-md text-primary font-bold">500+ people</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Highlight Card 2 (Placeholder for balance) -->
+<div class="border border-outline-variant rounded-lg p-5 bg-surface flex gap-4 opacity-75">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-tertiary-fixed">solar_power</span>
+</div>
+<div>
+<h3 class="text-body-lg font-body-lg font-bold text-primary mb-1">Rural Solar Microgrid</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-3">Providing consistent power to remote educational centers.</p>
+<div class="flex gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-1">
+<div class="text-label-sm font-label-sm text-on-surface-variant">Uptime</div>
+<div class="text-label-md font-label-md text-secondary font-bold">99.9%</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-1">
+<div class="text-label-sm font-label-sm text-on-surface-variant">Students</div>
+<div class="text-label-md font-label-md text-primary font-bold">1,200+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface pb-safe border-t border-outline-variant rounded-t-xl shadow-md">
+<a class="flex flex-col items-center justify-center text-secondary font-bold scale-90 transition-transform duration-150 p-2" href="#">
+<span class="material-symbols-outlined fill">home</span>
+<span class="text-label-sm font-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high rounded" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-label-sm font-label-sm mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high rounded" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-label-sm font-label-sm mt-1">Report</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high rounded" href="#">
+<span class="material-symbols-outlined">layers</span>
+<span class="text-label-sm font-label-sm mt-1">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high rounded" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-label-sm font-label-sm mt-1">Alerts</span>
+</a>
+</nav>
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (19)</span>
+    </button>
+  </div>
+  
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  <div id="civic-pulse-screen-navigator" class="fixed bottom-4 right-4 z-[9999] font-sans">
+    <div id="screen-nav-menu" class="hidden mb-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 p-3 w-64 max-h-80 overflow-y-auto transition-all">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-gray-100">
+        <span class="text-xs font-bold text-gray-800 uppercase tracking-wider">All 21 Screens</span>
+        <a href="../index.html" class="text-[11px] text-blue-600 hover:underline font-medium">Index ↗</a>
+      </div>
+      <div class="space-y-0.5">
+        
+    <a href="landing_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Landing Page
+    </a>
+  
+    <a href="login.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Sign In / Login
+    </a>
+  
+    <a href="signup.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Register / Sign Up
+    </a>
+  
+    <a href="citizen_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen Home Feed
+    </a>
+  
+    <a href="mobile_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Mobile Home Feed
+    </a>
+  
+    <a href="report_a_problem_flow.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Report a Problem
+    </a>
+  
+    <a href="duplicate_problem_detection.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Duplicate Detection
+    </a>
+  
+    <a href="problem_details_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Problem Details
+    </a>
+  
+    <a href="university_recommendations.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Recommendations
+    </a>
+  
+    <a href="recommendation_detail_view.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Recommendation Details
+    </a>
+  
+    <a href="match_evidence_details.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Match Evidence
+    </a>
+  
+    <a href="university_comparison.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Comparison
+    </a>
+  
+    <a href="partner_directory.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Partner Directory
+    </a>
+  
+    <a href="government_command_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Command Center
+    </a>
+  
+    <a href="government_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors bg-black text-white font-bold">
+      Government Dashboard
+    </a>
+  
+    <a href="district_insights_map.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      District Insights Map
+    </a>
+  
+    <a href="ai_analysis_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      AI Analysis Center
+    </a>
+  
+    <a href="impact_tracking_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Impact Tracking
+    </a>
+  
+    <a href="solution_impact_report.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Solution Impact Report
+    </a>
+  
+    <a href="citizen_government_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen-Gov Ecosystem
+    </a>
+  
+    <a href="innovation_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Innovation Ecosystem
+    </a>
+  
+      </div>
+    </div>
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (21)</span>
+    </button>
+  </div>
+  
+</body></html>

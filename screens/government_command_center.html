@@ -1,0 +1,683 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Government Dashboard - Civic Pulse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-tertiary-container": "#3980f4",
+                "surface-container-high": "#e6e8ea",
+                "on-background": "#191c1e",
+                "surface-tint": "#565e74",
+                "on-secondary-fixed": "#002113",
+                "surface-variant": "#e0e3e5",
+                "secondary-fixed": "#6ffbbe",
+                "primary": "#000000",
+                "surface": "#f7f9fb",
+                "on-tertiary-fixed-variant": "#004395",
+                "tertiary": "#000000",
+                "on-secondary-fixed-variant": "#005236",
+                "tertiary-container": "#001a42",
+                "surface-container-low": "#f2f4f6",
+                "surface-container-highest": "#e0e3e5",
+                "error-container": "#ffdad6",
+                "inverse-surface": "#2d3133",
+                "primary-fixed": "#dae2fd",
+                "tertiary-fixed-dim": "#adc6ff",
+                "primary-container": "#131b2e",
+                "outline-variant": "#c6c6cd",
+                "surface-bright": "#f7f9fb",
+                "on-tertiary-fixed": "#001a42",
+                "on-tertiary": "#ffffff",
+                "tertiary-fixed": "#d8e2ff",
+                "on-surface": "#191c1e",
+                "surface-dim": "#d8dadc",
+                "secondary": "#006c49",
+                "error": "#ba1a1a",
+                "surface-container": "#eceef0",
+                "secondary-container": "#6cf8bb",
+                "on-secondary-container": "#00714d",
+                "inverse-primary": "#bec6e0",
+                "secondary-fixed-dim": "#4edea3",
+                "on-primary-fixed": "#131b2e",
+                "on-primary": "#ffffff",
+                "inverse-on-surface": "#eff1f3",
+                "on-primary-container": "#7c839b",
+                "surface-container-lowest": "#ffffff",
+                "outline": "#76777d",
+                "background": "#f7f9fb",
+                "on-secondary": "#ffffff",
+                "on-surface-variant": "#45464d",
+                "on-error-container": "#93000a",
+                "on-primary-fixed-variant": "#3f465c",
+                "primary-fixed-dim": "#bec6e0",
+                "on-error": "#ffffff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem",
+                "2xl": "1rem"
+        },
+        "spacing": {
+                "container-max": "1280px",
+                "gutter": "24px",
+                "margin-mobile": "16px",
+                "unit": "8px",
+                "margin-desktop": "48px"
+        },
+        "fontFamily": {
+                "label-md": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Plus Jakarta Sans"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Plus Jakarta Sans"
+                ],
+                "headline-lg-mobile": [
+                        "Plus Jakarta Sans"
+                ],
+                "headline-lg": [
+                        "Plus Jakarta Sans"
+                ]
+        },
+        "fontSize": {
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "60px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "700"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface-container-lowest border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-4">
+<img alt="Civic Pulse Logo" class="h-8 w-8 object-contain hidden md:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIR_bp4D8htGaWs2ulHe7k6gq91rBE5xfrtJpZKHGvklpuEOoUKI1CaxZJZ93XORLsbsyun_qvD8deAFF5iOAoB1drNJbUORdzr2L7J1-x8tKQ3yjm0-xdW0MJ4qK7v0xWpQxwFL9Of90J6gBdzp-fcZHM2ax3Gcbz7PYBUxB7NKYqeFp34JYzumEIFtYIfl2n1xoxloxgGhYWZ12bAvAsMonxtpunpwNQ4QihgOsW9eDx1oDttXjl">
+<span class="text-headline-md font-headline-md font-bold text-primary">Civic Pulse</span>
+</div>
+<div class="hidden md:flex items-center gap-4">
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md flex items-center gap-2 hover:bg-surface-container-highest hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 600;">fact_check</span>
+                Review Pending Issues
+                <span class="absolute -top-1 -right-1 bg-error text-on-error text-[10px] font-bold px-1.5 py-0.5 rounded-full border-2 border-surface-container-lowest">24</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<div class="flex h-screen pt-16">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full w-64 bg-surface-container-lowest border-r border-outline-variant p-4 gap-4 fixed left-0 top-16 overflow-y-auto pb-20">
+<div>
+<div class="text-label-sm font-label-sm text-outline font-bold uppercase tracking-wider mb-2 px-4">Overview</div>
+<div class="flex flex-col gap-1">
+<a class="bg-secondary-container text-on-secondary-container rounded-xl font-bold px-4 py-2.5 flex items-center gap-3 transition-transform scale-95 opacity-80" href="#">
+<span class="material-symbols-outlined fill">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+</div>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-outline font-bold uppercase tracking-wider mb-2 px-4 mt-2">Challenges</div>
+<div class="flex flex-col gap-1">
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="text-label-md font-label-md">All Challenges</span>
+</a>
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">pending_actions</span>
+<span class="text-label-md font-label-md">Pending Review</span>
+<span class="ml-auto bg-error-container text-on-error-container text-[10px] font-bold px-1.5 py-0.5 rounded-full">24</span>
+</a>
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined text-error">priority_high</span>
+<span class="text-label-md font-label-md text-error">Priority</span>
+</a>
+</div>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-outline font-bold uppercase tracking-wider mb-2 px-4 mt-2">Innovation</div>
+<div class="flex flex-col gap-1">
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="text-label-md font-label-md">Projects</span>
+</a>
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-label-md font-label-md">Universities</span>
+</a>
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="text-label-md font-label-md">Industry</span>
+</a>
+</div>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-outline font-bold uppercase tracking-wider mb-2 px-4 mt-2">Insights</div>
+<div class="flex flex-col gap-1">
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-label-md font-label-md">AI Analysis</span>
+</a>
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-label-md font-label-md">Impact Tracking</span>
+</a>
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="text-label-md font-label-md">District View</span>
+</a>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant flex flex-col gap-1">
+<div class="text-label-sm font-label-sm text-outline font-bold uppercase tracking-wider mb-1 px-4">System</div>
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-label-md font-label-md">Notifications</span>
+</a>
+<a class="text-on-surface-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-6 overflow-y-auto pb-24 bg-surface">
+<div class="max-w-7xl mx-auto flex flex-col gap-6">
+<!-- Header & Filters -->
+<div>
+<h1 class="text-headline-lg font-headline-lg text-primary mb-1">Government Dashboard</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-4">Monitor societal challenges, innovation projects, collaborations, and measurable impact across Jharkhand.</p>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-2 flex flex-wrap gap-2 items-center shadow-sm">
+<div class="flex items-center bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant hover:bg-surface-container transition-colors cursor-pointer">
+<span class="text-label-md font-label-md text-on-surface">District: Jharkhand</span>
+<span class="material-symbols-outlined text-[18px] ml-1 text-on-surface-variant">arrow_drop_down</span>
+</div>
+<div class="flex items-center bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant hover:bg-surface-container transition-colors cursor-pointer">
+<span class="text-label-md font-label-md text-on-surface">Domain: All Domains</span>
+<span class="material-symbols-outlined text-[18px] ml-1 text-on-surface-variant">arrow_drop_down</span>
+</div>
+<div class="flex items-center bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant hover:bg-surface-container transition-colors cursor-pointer">
+<span class="text-label-md font-label-md text-on-surface">Status: All Status</span>
+<span class="material-symbols-outlined text-[18px] ml-1 text-on-surface-variant">arrow_drop_down</span>
+</div>
+<div class="flex items-center bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant hover:bg-surface-container transition-colors cursor-pointer">
+<span class="text-label-md font-label-md text-on-surface">Priority: All</span>
+<span class="material-symbols-outlined text-[18px] ml-1 text-on-surface-variant">arrow_drop_down</span>
+</div>
+<div class="ml-auto flex items-center bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant hover:bg-surface-container transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[18px] mr-1.5 text-on-surface-variant">calendar_today</span>
+<span class="text-label-md font-label-md text-on-surface">Last 30 Days</span>
+<span class="material-symbols-outlined text-[18px] ml-1 text-on-surface-variant">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- Requires Attention -->
+<div class="bg-error-container/20 border border-error/20 rounded-2xl p-5 shadow-sm">
+<h2 class="text-label-md font-label-md text-error flex items-center gap-2 mb-4 uppercase tracking-wider font-bold">
+<span class="material-symbols-outlined text-[20px]">warning</span> Requires Attention
+    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant flex flex-col shadow-sm">
+<div class="text-headline-md font-headline-md text-error mb-1">24</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mb-3">Awaiting Validation</div>
+<a href="problem_details_page.html" class="mt-auto block w-full py-1.5 bg-surface text-primary border border-outline-variant rounded-lg text-label-sm font-bold hover:bg-surface-container transition-colors text-center">Review Problem</a>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant flex flex-col shadow-sm">
+<div class="text-headline-md font-headline-md text-error mb-1">8</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mb-3">Missed Milestones</div>
+<a href="impact_tracking_dashboard.html" class="mt-auto block w-full py-1.5 bg-surface text-primary border border-outline-variant rounded-lg text-label-sm font-bold hover:bg-surface-container transition-colors text-center">View Projects</a>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant flex flex-col shadow-sm">
+<div class="text-headline-md font-headline-md text-[#ea580c] mb-1">5</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mb-3">Waiting for Industry Partner</div>
+<a href="partner_directory.html" class="mt-auto block w-full py-1.5 bg-surface text-primary border border-outline-variant rounded-lg text-label-sm font-bold hover:bg-surface-container transition-colors text-center">Find Industry Partner →</a>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant flex flex-col shadow-sm">
+<div class="text-headline-md font-headline-md text-[#ea580c] mb-1">3</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mb-3">Awaiting Approval</div>
+<a href="problem_details_page.html" class="mt-auto block w-full py-1.5 bg-surface text-primary border border-outline-variant rounded-lg text-label-sm font-bold hover:bg-surface-container transition-colors text-center">Review Problem</a>
+</div>
+</div>
+</div>
+<!-- KPIs -->
+<div class="grid grid-cols-2 lg:grid-cols-6 gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 shadow-sm flex flex-col">
+<div class="text-label-sm font-label-sm text-on-surface-variant mb-2">Total Challenges</div>
+<div class="text-headline-lg font-headline-lg text-primary">12,450</div>
+</div>
+<div class="bg-surface-container-lowest border border-error/30 rounded-2xl p-4 shadow-sm flex flex-col">
+<div class="text-label-sm font-label-sm text-error font-bold mb-2 flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">pending_actions</span> Awaiting Validation</div>
+<div class="text-headline-lg font-headline-lg text-error">324</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 shadow-sm flex flex-col">
+<div class="text-label-sm font-label-sm text-on-surface-variant mb-2">Active Projects</div>
+<div class="text-headline-lg font-headline-lg text-tertiary-container">1,420</div>
+</div>
+<div class="bg-surface-container-lowest border border-error/30 rounded-2xl p-4 shadow-sm flex flex-col">
+<div class="text-label-sm font-label-sm text-error font-bold mb-2 flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">event_busy</span> Overdue Projects</div>
+<div class="text-headline-lg font-headline-lg text-error">86</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 shadow-sm flex flex-col">
+<div class="text-label-sm font-label-sm text-on-surface-variant mb-2">Solutions Deployed</div>
+<div class="text-headline-lg font-headline-lg text-secondary">186</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-4 shadow-sm flex flex-col">
+<div class="text-label-sm font-label-sm text-on-surface-variant mb-2">Citizens Impacted</div>
+<div class="text-headline-lg font-headline-lg text-secondary">50,240</div>
+</div>
+</div>
+<!-- Pipeline -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 shadow-sm overflow-x-auto scrollbar-hide">
+<h2 class="text-headline-md font-headline-md text-primary mb-5">Challenge Resolution Pipeline</h2>
+<div class="flex items-center min-w-[800px] justify-between relative px-4 pb-4">
+<div class="absolute left-10 right-10 top-6 h-1 bg-surface-container-highest -z-10 rounded-full"></div>
+<div class="flex flex-col items-center gap-2 bg-surface-container-lowest z-10 px-2">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center border-4 border-surface-container-lowest text-on-surface-variant">
+<span class="material-symbols-outlined">report</span>
+</div>
+<div class="text-label-sm font-label-sm font-bold text-on-surface">Reported</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">12,450</div>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface-container-lowest z-10 px-2">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center border-4 border-surface-container-lowest">
+<span class="material-symbols-outlined">fact_check</span>
+</div>
+<div class="text-label-sm font-label-sm font-bold text-on-surface">Validated</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">8,230</div>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface-container-lowest z-10 px-2">
+<div class="w-12 h-12 rounded-full bg-tertiary-container text-on-tertiary flex items-center justify-center border-4 border-surface-container-lowest">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div class="text-label-sm font-label-sm font-bold text-on-surface">University Assigned</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">3,120</div>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface-container-lowest z-10 px-2">
+<div class="w-12 h-12 rounded-full bg-tertiary-container text-on-tertiary flex items-center justify-center border-4 border-surface-container-lowest">
+<span class="material-symbols-outlined">engineering</span>
+</div>
+<div class="text-label-sm font-label-sm font-bold text-on-surface">In Development</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">1,420</div>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface-container-lowest z-10 px-2">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center border-4 border-surface-container-lowest">
+<span class="material-symbols-outlined">bug_report</span>
+</div>
+<div class="text-label-sm font-label-sm font-bold text-on-surface">Testing</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">420</div>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface-container-lowest z-10 px-2">
+<div class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center border-4 border-surface-container-lowest">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div class="text-label-sm font-label-sm font-bold text-on-surface">Deployed</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">186</div>
+</div>
+</div>
+</div>
+<!-- Visuals Section (Map & Chart) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Map Widget -->
+<div class="lg:col-span-3 bg-primary-container text-on-primary rounded-2xl p-6 shadow-md mb-2">
+  <div class="flex items-center gap-3 mb-4">
+    <span class="material-symbols-outlined text-on-tertiary-container">psychology</span>
+    <h2 class="text-headline-md font-headline-md">AI Government Insights</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="flex items-start gap-3">
+      <span class="material-symbols-outlined text-error mt-1">trending_up</span>
+      <p class="text-body-md">Water-related challenges increased <span class="font-bold text-error">24%</span> in Ranchi over the last 14 days. Immediate resource reallocation recommended.</p>
+    </div>
+    <div class="flex items-start gap-3">
+      <span class="material-symbols-outlined text-on-tertiary-container mt-1">hub</span>
+      <p class="text-body-md"><span class="font-bold">12 similar water problems</span> detected across 4 villages. Suggesting a unified infrastructure project for cost efficiency.</p>
+    </div>
+  </div>
+</div><div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 shadow-sm flex flex-col">
+<h2 class="text-headline-md font-headline-md text-primary mb-4">Jharkhand Hotspot Map</h2>
+<div class="w-full flex-grow min-h-[400px] rounded-xl overflow-hidden border border-outline-variant relative bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A highly detailed, modern minimalist heat map of Jharkhand state in a light mode dashboard interface. The map uses subtle grays for landmass and outlines, overlaid with glowing emerald green and deep navy data points representing problem hotspots. The overall aesthetic is professional, clean, and data-heavy, evoking a sense of structural clarity and authoritative civic analytics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB71txl-z4j0dEotiHZpbjElDkTG3yPfw5NoEc5B-8-TNSNe_FbvwvErQpiNGRlmJS473snVe64MQPmFnenDG8JF2wxXGtOXoEbBnvkR1WvImxUTGfNO0yWGEiOvBGnkmJJcZgE0HMyRS47k9NXHA9ht8yQ_oDodyMLncXrDkBBt6Da1c1hClBOyfKpZgkts-3y32LuqKHJWmEh7n_-HYtyHfKjhKZUrOn4IdlEUkG7qDuMymTwPqhG">
+<!-- Overlay UI on Map -->
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm p-3 rounded-lg border border-outline-variant shadow-sm flex gap-6">
+<div>
+<div class="text-label-sm font-label-sm text-on-surface-variant font-bold mb-2 uppercase text-[10px]">Priority</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-3 h-3 rounded-full bg-error"></span>
+<span class="text-[11px] font-medium text-on-surface">Critical</span>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-3 h-3 rounded-full bg-[#ea580c]"></span>
+<span class="text-[11px] font-medium text-on-surface">High</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="text-[11px] font-medium text-on-surface">Normal</span>
+</div>
+</div>
+<div class="border-l border-outline-variant pl-4">
+<div class="text-label-sm font-label-sm text-on-surface-variant font-bold mb-2 uppercase text-[10px]">Status</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+<span class="text-[11px] font-medium text-on-surface">Active</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[14px]">check_circle</span>
+<span class="text-[11px] font-medium text-on-surface">Resolved</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Charts -->
+<div class="flex flex-col gap-6">
+<!-- Bar Chart Widget -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 shadow-sm flex flex-col flex-1">
+<h2 class="text-headline-md font-headline-md text-primary mb-6">Challenges by Domain</h2>
+<div class="flex flex-col gap-5 flex-grow justify-center">
+<div>
+<div class="flex justify-between text-label-md font-label-md mb-1.5 text-on-surface">
+<span class="">Infrastructure</span>
+<span class="font-bold">4,200</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-primary-container h-2 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-label-md font-label-md mb-1.5 text-on-surface">
+<span class="">Water &amp; Sanitation</span>
+<span class="font-bold">3,150</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-[#ea580c] h-2 rounded-full" style="width: 65%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-label-md font-label-md mb-1.5 text-on-surface">
+<span class="">Electricity</span>
+<span class="font-bold">2,800</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-primary-container h-2 rounded-full" style="width: 55%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-label-md font-label-md mb-1.5 text-on-surface">
+<span class="">Healthcare</span>
+<span class="font-bold">1,400</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-primary-container h-2 rounded-full" style="width: 30%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Emerging Challenges -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 shadow-sm flex flex-col flex-1">
+<h2 class="text-headline-md font-headline-md text-primary mb-4">Emerging Challenges</h2>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between p-3 bg-error-container/20 border border-error/10 rounded-lg">
+<span class="text-label-md font-label-md text-on-surface font-bold">Water Shortage</span>
+<span class="text-label-sm font-label-sm text-error flex items-center font-bold">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span> 24%
+                </span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface border border-outline-variant rounded-lg">
+<span class="text-label-md font-label-md text-on-surface">Road Potholes</span>
+<span class="text-label-sm font-label-sm text-[#ea580c] flex items-center font-bold">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span> 18%
+                </span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface border border-outline-variant rounded-lg">
+<span class="text-label-md font-label-md text-on-surface">Public Wifi</span>
+<span class="text-label-sm font-label-sm text-secondary flex items-center font-bold">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span> 5%
+                </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest pb-safe border-t border-outline-variant shadow-md">
+<a class="flex flex-col items-center justify-center text-secondary font-bold scale-90 transition-transform duration-150 p-2" href="government_command_center.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high rounded" href="problem_details_page.html">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="text-[10px] font-label-sm">Challenges</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high rounded" href="impact_tracking_dashboard.html">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="text-[10px] font-label-sm">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high rounded" href="solution_impact_report.html">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-[10px] font-label-sm">Impact</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high rounded relative" href="district_insights_map.html">
+<span class="material-symbols-outlined">map</span>
+<span class="text-[10px] font-label-sm">Map</span>
+</a>
+</nav>
+
+
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (19)</span>
+    </button>
+  </div>
+  
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  <div id="civic-pulse-screen-navigator" class="fixed bottom-4 right-4 z-[9999] font-sans">
+    <div id="screen-nav-menu" class="hidden mb-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 p-3 w-64 max-h-80 overflow-y-auto transition-all">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-gray-100">
+        <span class="text-xs font-bold text-gray-800 uppercase tracking-wider">All 21 Screens</span>
+        <a href="../index.html" class="text-[11px] text-blue-600 hover:underline font-medium">Index ↗</a>
+      </div>
+      <div class="space-y-0.5">
+        
+    <a href="landing_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Landing Page
+    </a>
+  
+    <a href="login.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Sign In / Login
+    </a>
+  
+    <a href="signup.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Register / Sign Up
+    </a>
+  
+    <a href="citizen_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen Home Feed
+    </a>
+  
+    <a href="mobile_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Mobile Home Feed
+    </a>
+  
+    <a href="report_a_problem_flow.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Report a Problem
+    </a>
+  
+    <a href="duplicate_problem_detection.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Duplicate Detection
+    </a>
+  
+    <a href="problem_details_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Problem Details
+    </a>
+  
+    <a href="university_recommendations.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Recommendations
+    </a>
+  
+    <a href="recommendation_detail_view.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Recommendation Details
+    </a>
+  
+    <a href="match_evidence_details.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Match Evidence
+    </a>
+  
+    <a href="university_comparison.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Comparison
+    </a>
+  
+    <a href="partner_directory.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Partner Directory
+    </a>
+  
+    <a href="government_command_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors bg-black text-white font-bold">
+      Government Command Center
+    </a>
+  
+    <a href="government_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Dashboard
+    </a>
+  
+    <a href="district_insights_map.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      District Insights Map
+    </a>
+  
+    <a href="ai_analysis_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      AI Analysis Center
+    </a>
+  
+    <a href="impact_tracking_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Impact Tracking
+    </a>
+  
+    <a href="solution_impact_report.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Solution Impact Report
+    </a>
+  
+    <a href="citizen_government_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen-Gov Ecosystem
+    </a>
+  
+    <a href="innovation_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Innovation Ecosystem
+    </a>
+  
+      </div>
+    </div>
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (21)</span>
+    </button>
+  </div>
+  
+</body></html>

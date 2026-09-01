@@ -1,0 +1,859 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Civic Pulse - Citizen Home Feed</title>
+<!-- Tailwind Config injected by system -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f7f9fb",
+                    "on-secondary-fixed": "#002113",
+                    "primary": "#000000",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#004395",
+                    "outline": "#76777d",
+                    "on-surface": "#191c1e",
+                    "on-primary-fixed": "#131b2e",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "tertiary-fixed": "#d8e2ff",
+                    "on-primary-container": "#7c839b",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#131b2e",
+                    "tertiary": "#000000",
+                    "surface-tint": "#565e74",
+                    "surface-dim": "#d8dadc",
+                    "on-secondary-fixed-variant": "#005236",
+                    "secondary": "#006c49",
+                    "on-background": "#191c1e",
+                    "inverse-primary": "#bec6e0",
+                    "inverse-surface": "#2d3133",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#6ffbbe",
+                    "secondary-container": "#6cf8bb",
+                    "on-tertiary-container": "#3980f4",
+                    "background": "#f7f9fb",
+                    "surface-container-low": "#f2f4f6",
+                    "surface": "#f7f9fb",
+                    "surface-container-high": "#e6e8ea",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-secondary-container": "#00714d",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-container": "#001a42",
+                    "outline-variant": "#c6c6cd",
+                    "surface-container": "#eceef0",
+                    "on-tertiary-fixed": "#001a42",
+                    "on-surface-variant": "#45464d",
+                    "primary-fixed": "#dae2fd",
+                    "secondary-fixed-dim": "#4edea3",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "margin-desktop": "48px",
+                    "unit": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "display-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-lg-mobile": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "label-sm": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "60px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            background-color: #F8FAFC; /* Fallback neutral-50 if theme background fails */
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .material-symbols-outlined.fill-icon {
+          font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom Scrollbar for feeds */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        
+        .soft-lift {
+            box-shadow: 0px 4px 12px rgba(15, 23, 42, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased overflow-hidden">
+<!-- App Container -->
+<div class="flex h-screen w-full mx-auto">
+<!-- ==========================================
+             SideNavBar (Desktop)
+             ========================================== -->
+<nav class="hidden md:flex flex-col h-screen p-6 gap-unit docked left-0 w-64 border-r border-outline-variant bg-surface-container-lowest z-40 shrink-0">
+<!-- Brand -->
+<a href="landing_page.html" class="flex items-center gap-3 mb-8 hover:opacity-80 transition-opacity">
+<img alt="Logo" class="w-10 h-10 rounded-lg object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIR_bp4D8htGaWs2ulHe7k6gq91rBE5xfrtJpZKHGvklpuEOoUKI1CaxZJZ93XORLsbsyun_qvD8deAFF5iOAoB1drNJbUORdzr2L7J1-x8tKQ3yjm0-xdW0MJ4qK7v0xWpQxwFL9Of90J6gBdzp-fcZHM2ax3Gcbz7PYBUxB7NKYqeFp34JYzumEIFtYIfl2n1xoxloxgGhYWZ12bAvAsMonxtpunpwNQ4QihgOsW9eDx1oDttXjl">
+<div>
+<h1 class="text-headline-md font-headline-md font-bold text-primary">Civic Pulse</h1>
+<span class="text-label-sm font-label-sm text-on-surface-variant block">Citizen Portal</span>
+</div>
+</a>
+<!-- Primary Action -->
+<a href="report_a_problem_flow.html" class="bg-primary text-on-primary font-label-md text-label-md rounded-full py-3 px-4 mb-6 hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 soft-lift w-full font-bold">
+<span class="material-symbols-outlined" style="font-size: 20px;">add</span>
++ Report Problem
+</a>
+<!-- Main Nav -->
+<div class="flex flex-col gap-2 flex-grow">
+<!-- Active Item -->
+<a class="bg-secondary-container text-on-secondary-container rounded-xl font-bold px-4 py-3 flex items-center gap-3 transition-transform scale-100 cursor-default" href="citizen_home_feed.html">
+<span class="material-symbols-outlined fill-icon">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<!-- Inactive Items -->
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors cursor-pointer" href="district_insights_map.html">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-label-md font-label-md">Explore Map</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors cursor-pointer" href="problem_details_page.html">
+<span class="material-symbols-outlined">assignment</span>
+<span class="text-label-md font-label-md">My Problems</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors cursor-pointer" href="impact_tracking_dashboard.html">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="text-label-md font-label-md">Projects & Impact</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors cursor-pointer" href="ai_analysis_center.html">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-label-md font-label-md">AI Analysis</span>
+</a>
+</div>
+<!-- Footer Nav -->
+<div class="flex flex-col gap-2 mt-auto pt-4 border-t border-outline-variant">
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors cursor-pointer" href="partner_directory.html">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-md font-label-md">Partners Directory</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors cursor-pointer" href="landing_page.html">
+<span class="material-symbols-outlined">help</span>
+<span class="text-label-md font-label-md">About & Support</span>
+</a>
+<!-- User Profile Minimized -->
+<a href="partner_directory.html" class="mt-4 flex items-center gap-3 px-4 py-2 hover:bg-surface-container-high rounded-xl transition-colors">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2EkNDvwlRaR7HTGUwXdZi_DZmk2J6F9bNn88J47Q6aZJWqKGhD0-lgJZZ2HM2CVgLOD5TFmGOEwLTv4YdVTzN3qSm-UqeJzgQHx1ydjXhOi3GM1PTl-54iVj0ZqLtUFrJ-_wYeOEyqDInpNm2LZAK-bjC1oMeKKRRBL0GjkG_C_0qivY-Cc_Mve6rFS87ChM_PDDOsg2XpTKjQRxMZ6XEIjQUHqRDhJPfTy4ZDsJM1egugLY__OdC">
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm font-bold text-on-surface">Rahul D.</span>
+<span class="text-[10px] font-label-sm text-on-surface-variant">Citizen Level 3 • <a href="login.html" class="text-blue-600 hover:underline">Switch</a></span>
+</div>
+</a>
+</div>
+</nav>
+<!-- ==========================================
+             TopNavBar (Mobile)
+             ========================================== -->
+<header class="md:hidden fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface border-b border-outline-variant">
+<a href="landing_page.html" class="flex items-center gap-2">
+<img alt="Logo" class="w-8 h-8 rounded-lg object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIR_bp4D8htGaWs2ulHe7k6gq91rBE5xfrtJpZKHGvklpuEOoUKI1CaxZJZ93XORLsbsyun_qvD8deAFF5iOAoB1drNJbUORdzr2L7J1-x8tKQ3yjm0-xdW0MJ4qK7v0xWpQxwFL9Of90J6gBdzp-fcZHM2ax3Gcbz7PYBUxB7NKYqeFp34JYzumEIFtYIfl2n1xoxloxgGhYWZ12bAvAsMonxtpunpwNQ4QihgOsW9eDx1oDttXjl">
+<h1 class="text-headline-md font-headline-md font-bold text-primary">Civic Pulse</h1>
+</a>
+<div class="flex items-center gap-3">
+<a href="government_command_center.html" class="text-primary p-1">
+<span class="material-symbols-outlined">notifications</span>
+</a>
+<a href="partner_directory.html" class="text-primary p-1">
+<span class="material-symbols-outlined">account_circle</span>
+</a>
+</div>
+</header>
+<!-- ==========================================
+             Main Content Area (Center Feed + Right Sidebar)
+             ========================================== -->
+<main class="flex-1 flex flex-col md:flex-row overflow-hidden h-full pt-16 md:pt-0 pb-16 md:pb-0">
+<!-- Center Feed Column -->
+<section class="flex-1 flex flex-col min-w-0 bg-background overflow-y-auto custom-scrollbar">
+<!-- Feed Header & Filters -->
+<div class="sticky top-0 z-30 bg-background/90 backdrop-blur-md px-margin-mobile md:px-gutter py-6 border-b border-outline-variant"><div class="flex flex-col gap-4"><div class="flex flex-col md:flex-row md:items-center justify-between gap-2"><div><h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary">Problems Near You</h2><div class="flex items-center gap-2 mt-1 text-secondary font-semibold"><span class="material-symbols-outlined" style="font-size: 18px;">location_on</span><span class="text-label-md">Ranchi, Jharkhand</span><span class="text-on-surface-variant font-normal text-label-sm ml-2">• Showing challenges within 10 km</span></div></div><a href="district_insights_map.html" class="hidden md:flex items-center gap-2 px-4 py-2 bg-surface border border-outline rounded-lg text-label-md hover:bg-surface-container-low transition-colors font-semibold">
+<span class="material-symbols-outlined" style="font-size: 20px;">distance</span>
+<span>Change Radius & View Map</span>
+</a></div><div class="flex overflow-x-auto custom-scrollbar pb-2 -mb-2 gap-2" id="feed-category-filters">
+  <button onclick="filterFeed('all', this)" class="category-pill active px-4 py-2 bg-primary text-on-primary text-label-md font-label-md rounded-full whitespace-nowrap border border-transparent shadow-sm transition-all">All</button>
+  <button onclick="filterFeed('water', this)" class="category-pill px-4 py-2 bg-surface text-on-surface-variant text-label-md font-label-md rounded-full whitespace-nowrap border border-outline hover:bg-surface-container-low transition-all">Water</button>
+  <button onclick="filterFeed('roads', this)" class="category-pill px-4 py-2 bg-surface text-on-surface-variant text-label-md font-label-md rounded-full whitespace-nowrap border border-outline hover:bg-surface-container-low transition-all">Roads</button>
+  <button onclick="filterFeed('healthcare', this)" class="category-pill px-4 py-2 bg-surface text-on-surface-variant text-label-md font-label-md rounded-full whitespace-nowrap border border-outline hover:bg-surface-container-low transition-all">Healthcare</button>
+  <button onclick="filterFeed('education', this)" class="category-pill px-4 py-2 bg-surface text-on-surface-variant text-label-md font-label-md rounded-full whitespace-nowrap border border-outline hover:bg-surface-container-low transition-all">Education</button>
+  <button onclick="filterFeed('agriculture', this)" class="category-pill px-4 py-2 bg-surface text-on-surface-variant text-label-md font-label-md rounded-full whitespace-nowrap border border-outline hover:bg-surface-container-low transition-all">Agriculture</button>
+  <button onclick="filterFeed('environment', this)" class="category-pill px-4 py-2 bg-surface text-on-surface-variant text-label-md font-label-md rounded-full whitespace-nowrap border border-outline hover:bg-surface-container-low transition-all">Environment</button>
+</div>
+</div></div>
+<!-- Feed Cards Container -->
+<div class="p-margin-mobile md:p-gutter flex flex-col gap-6 max-w-3xl mx-auto w-full pb-32 md:pb-12" id="feed-cards-container">
+  
+  <!-- Problem Card 1: Water -->
+  <article class="feed-item bg-surface-container-lowest rounded-xl border border-outline p-6 hover:soft-lift transition-all duration-200" data-category="water">
+    <div class="flex justify-between items-start mb-4">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="px-2.5 py-0.5 bg-blue-500/10 text-blue-600 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-500/20">In Progress</span>
+        <span class="px-2.5 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded uppercase">Water</span>
+        <span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+          <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>2.4 km away • Sector 4
+        </span>
+      </div>
+      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-headline-md font-headline-md text-primary mb-2">
+        <a href="problem_details_page.html" class="hover:text-secondary transition-colors">Irregular Water Supply in Village X →</a>
+      </h3>
+      <p class="text-body-md font-body-md text-on-surface-variant line-clamp-2">The main water pipeline servicing the eastern sector of Village X has been experiencing inconsistent pressure for the last two weeks, leading to severe shortages during peak hours.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+        <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary" style="font-size: 20px;">groups</span>
+        </div>
+        <div>
+          <p class="text-label-sm font-bold text-on-surface">126 people affected</p>
+          <p class="text-[10px] text-on-surface-variant">Community Support</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+        <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary" style="font-size: 20px;">school</span>
+        </div>
+        <div>
+          <a href="university_recommendations.html" class="text-label-sm font-bold text-on-surface hover:underline">ABC University →</a>
+          <p class="text-[10px] text-on-surface-variant">Engineering Dept. Prototype</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-outline-variant">
+      <button onclick="this.classList.toggle('bg-secondary');this.classList.toggle('text-white');" class="flex-1 min-w-[140px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 transition-colors font-bold">
+        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span>I'm Affected
+      </button>
+      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span>14 Comments
+      </a>
+      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors ml-auto font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">bookmark</span>Details
+      </a>
+    </div>
+  </article>
+
+  <!-- Problem Card 2: Roads -->
+  <article class="feed-item bg-surface-container-lowest rounded-xl border border-outline p-6 hover:soft-lift transition-all duration-200" data-category="roads">
+    <div class="flex justify-between items-start mb-4">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="px-2.5 py-0.5 bg-amber-500/10 text-amber-600 text-[10px] font-bold rounded uppercase tracking-wider border border-amber-500/20">Under Triage</span>
+        <span class="px-2.5 py-0.5 bg-orange-100 text-orange-800 text-[10px] font-bold rounded uppercase">Roads</span>
+        <span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+          <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>1.8 km away • NH-33 Link
+        </span>
+      </div>
+      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-headline-md font-headline-md text-primary mb-2">
+        <a href="problem_details_page.html" class="hover:text-secondary transition-colors">Dangerous Potholes and Subsurface Erosion on NH-33 Bypass →</a>
+      </h3>
+      <p class="text-body-md font-body-md text-on-surface-variant line-clamp-2">Monsoon rains caused multiple large potholes near the bypass junction, creating hazardous bottlenecks for daily commuters and freight vehicles.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+        <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary" style="font-size: 20px;">groups</span>
+        </div>
+        <div>
+          <p class="text-label-sm font-bold text-on-surface">342 people affected</p>
+          <p class="text-[10px] text-on-surface-variant">Active Petition</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+        <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary" style="font-size: 20px;">school</span>
+        </div>
+        <div>
+          <a href="university_recommendations.html" class="text-label-sm font-bold text-on-surface hover:underline">BIT Mesra Civil Dept →</a>
+          <p class="text-[10px] text-on-surface-variant">Polymer Bitumen Solution</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-outline-variant">
+      <button onclick="this.classList.toggle('bg-secondary');this.classList.toggle('text-white');" class="flex-1 min-w-[140px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 transition-colors font-bold">
+        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span>I'm Affected
+      </button>
+      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span>38 Comments
+      </a>
+      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors ml-auto font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">bookmark</span>Details
+      </a>
+    </div>
+  </article>
+
+  <!-- Problem Card 3: Healthcare -->
+  <article class="feed-item bg-surface-container-lowest rounded-xl border border-outline p-6 hover:soft-lift transition-all duration-200" data-category="healthcare">
+    <div class="flex justify-between items-start mb-4">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="px-2.5 py-0.5 bg-red-500/10 text-red-600 text-[10px] font-bold rounded uppercase tracking-wider border border-red-500/20">High Priority</span>
+        <span class="px-2.5 py-0.5 bg-rose-100 text-rose-800 text-[10px] font-bold rounded uppercase">Healthcare</span>
+        <span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+          <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>4.2 km away • Angara Block
+        </span>
+      </div>
+      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-headline-md font-headline-md text-primary mb-2">
+        <a href="problem_details_page.html" class="hover:text-secondary transition-colors">Primary Health Center Cold Storage & Medicine Stockout →</a>
+      </h3>
+      <p class="text-body-md font-body-md text-on-surface-variant line-clamp-2">Solar backup failure at the Angara PHC has compromised vaccine temperature preservation during grid power fluctuations. Critical antidote reserves running low.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+        <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary" style="font-size: 20px;">groups</span>
+        </div>
+        <div>
+          <p class="text-label-sm font-bold text-on-surface">510 patients affected</p>
+          <p class="text-[10px] text-on-surface-variant">Rural Health Cluster</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+        <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary" style="font-size: 20px;">school</span>
+        </div>
+        <div>
+          <a href="university_recommendations.html" class="text-label-sm font-bold text-on-surface hover:underline">RIMS Bioengineering →</a>
+          <p class="text-[10px] text-on-surface-variant">IoT Cold-Chain Monitor</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-outline-variant">
+      <button onclick="this.classList.toggle('bg-secondary');this.classList.toggle('text-white');" class="flex-1 min-w-[140px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 transition-colors font-bold">
+        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span>I'm Affected
+      </button>
+      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span>29 Comments
+      </a>
+      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors ml-auto font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">bookmark</span>Details
+      </a>
+    </div>
+  </article>
+
+  <!-- Problem Card 4: Education -->
+  <article class="feed-item bg-surface-container-lowest rounded-xl border border-outline p-6 hover:soft-lift transition-all duration-200" data-category="education">
+    <div class="flex justify-between items-start mb-4">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="px-2.5 py-0.5 bg-blue-500/10 text-blue-600 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-500/20">Proposal Ready</span>
+        <span class="px-2.5 py-0.5 bg-indigo-100 text-indigo-800 text-[10px] font-bold rounded uppercase">Education</span>
+        <span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+          <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>3.5 km away • Namkum
+        </span>
+      </div>
+      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-headline-md font-headline-md text-primary mb-2">
+        <a href="problem_details_page.html" class="hover:text-secondary transition-colors">Digital Lab Power Disruption at Govt. High School Namkum →</a>
+      </h3>
+      <p class="text-body-md font-body-md text-on-surface-variant line-clamp-2">Frequent low voltage is disrupting computer literacy classes for 400+ middle school students. Needs micro-solar hybrid inverter setup.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+        <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary" style="font-size: 20px;">groups</span>
+        </div>
+        <div>
+          <p class="text-label-sm font-bold text-on-surface">412 students</p>
+          <p class="text-[10px] text-on-surface-variant">School Authority</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+        <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary" style="font-size: 20px;">school</span>
+        </div>
+        <div>
+          <a href="university_recommendations.html" class="text-label-sm font-bold text-on-surface hover:underline">NIT Jamshedpur Solar Lab →</a>
+          <p class="text-[10px] text-on-surface-variant">Micro-Grid Grant Ready</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-outline-variant">
+      <button onclick="this.classList.toggle('bg-secondary');this.classList.toggle('text-white');" class="flex-1 min-w-[140px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 transition-colors font-bold">
+        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span>I'm Affected
+      </button>
+      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span>19 Comments
+      </a>
+      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors ml-auto font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">bookmark</span>Details
+      </a>
+    </div>
+  </article>
+
+  <!-- Problem Card 5: Agriculture -->
+  <article class="feed-item bg-surface-container-lowest rounded-xl border border-outline p-6 hover:soft-lift transition-all duration-200" data-category="agriculture">
+    <div class="flex justify-between items-start mb-4">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="px-2.5 py-0.5 bg-emerald-500/10 text-emerald-700 text-[10px] font-bold rounded uppercase tracking-wider border border-emerald-500/20">Field Study Active</span>
+        <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded uppercase">Agriculture</span>
+        <span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+          <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>8.1 km away • Tamar Block
+        </span>
+      </div>
+      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-headline-md font-headline-md text-primary mb-2">
+        <a href="problem_details_page.html" class="hover:text-secondary transition-colors">Groundwater Depletion & Drip Irrigation Failure in Tamar →</a>
+      </h3>
+      <p class="text-body-md font-body-md text-on-surface-variant line-clamp-2">Subterranean water table levels dropped by 4 meters over two seasons. Smallholder vegetable farmers facing yield losses without sensor-based automated irrigation.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+        <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary" style="font-size: 20px;">groups</span>
+        </div>
+        <div>
+          <p class="text-label-sm font-bold text-on-surface">184 farming families</p>
+          <p class="text-[10px] text-on-surface-variant">Farmer Cooperative</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+        <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary" style="font-size: 20px;">school</span>
+        </div>
+        <div>
+          <a href="university_recommendations.html" class="text-label-sm font-bold text-on-surface hover:underline">Birsa Agricultural Univ →</a>
+          <p class="text-[10px] text-on-surface-variant">Smart Irrigation Pilot</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-outline-variant">
+      <button onclick="this.classList.toggle('bg-secondary');this.classList.toggle('text-white');" class="flex-1 min-w-[140px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 transition-colors font-bold">
+        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span>I'm Affected
+      </button>
+      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span>45 Comments
+      </a>
+      <a href="solution_impact_report.html" class="text-primary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors ml-auto font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">bookmark</span>Details
+      </a>
+    </div>
+  </article>
+
+  <!-- Problem Card 6: Environment -->
+  <article class="feed-item bg-surface-container-lowest rounded-xl border border-outline p-6 hover:soft-lift transition-all duration-200" data-category="environment">
+    <div class="flex justify-between items-start mb-4">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="px-2.5 py-0.5 bg-yellow-500/10 text-yellow-700 text-[10px] font-bold rounded uppercase tracking-wider border border-yellow-500/20">Investigation</span>
+        <span class="px-2.5 py-0.5 bg-teal-100 text-teal-800 text-[10px] font-bold rounded uppercase">Environment</span>
+        <span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+          <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>5.7 km away • Subarnarekha Basin
+        </span>
+      </div>
+      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-headline-md font-headline-md text-primary mb-2">
+        <a href="problem_details_page.html" class="hover:text-secondary transition-colors">Industrial Waste Dumping near River Tributary →</a>
+      </h3>
+      <p class="text-body-md font-body-md text-on-surface-variant line-clamp-2">Unauthorized dumping of solid packaging waste and chemical runoffs near the stream bank. Need drone mapping and water toxicity telemetry.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+        <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary" style="font-size: 20px;">groups</span>
+        </div>
+        <div>
+          <p class="text-label-sm font-bold text-on-surface">630 citizens signed</p>
+          <p class="text-[10px] text-on-surface-variant">Eco-Watch Committee</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+        <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary" style="font-size: 20px;">school</span>
+        </div>
+        <div>
+          <a href="university_recommendations.html" class="text-label-sm font-bold text-on-surface hover:underline">Central University Jharkhand →</a>
+          <p class="text-[10px] text-on-surface-variant">Environmental Sciences</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-outline-variant">
+      <button onclick="this.classList.toggle('bg-secondary');this.classList.toggle('text-white');" class="flex-1 min-w-[140px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 transition-colors font-bold">
+        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span>I'm Affected
+      </button>
+      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span>52 Comments
+      </a>
+      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors ml-auto font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">bookmark</span>Details
+      </a>
+    </div>
+  </article>
+
+</div>
+<!-- Placeholder for loading more -->
+<div class="py-8 flex justify-center items-center">
+<div class="w-8 h-8 border-4 border-outline-variant border-t-primary rounded-full animate-spin"></div>
+</div>
+</div>
+</section>
+<!-- ==========================================
+                 Right Sidebar (Desktop Only)
+                 ========================================== -->
+<aside class="hidden lg:flex flex-col w-80 border-l border-outline-variant bg-surface p-6 gap-8 overflow-y-auto custom-scrollbar shrink-0">
+<!-- Reported Problems Summary Widget -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline p-5 soft-lift">
+<h3 class="text-label-md font-label-md text-primary font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">bar_chart</span>
+                        Area Summary
+                    </h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="text-center p-3 bg-surface rounded-lg border border-outline-variant">
+<span class="text-display-lg font-display-lg text-primary block mb-1">42</span>
+<span class="text-[10px] font-label-sm text-on-surface-variant uppercase tracking-wider">Active</span>
+</div>
+<div class="text-center p-3 bg-surface rounded-lg border border-outline-variant">
+<span class="text-display-lg font-display-lg text-secondary block mb-1">128</span>
+<span class="text-[10px] font-label-sm text-on-surface-variant uppercase tracking-wider">Solved</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant">
+<div class="flex justify-between items-center mb-2">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Resolution Rate</span>
+<span class="text-label-sm font-label-sm font-bold text-secondary">75%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 75%"></div>
+</div>
+</div>
+</div>
+<!-- Recent Success Stories -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline p-5">
+<h3 class="text-label-md font-label-md text-primary font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">workspace_premium</span>
+                        Recent Success Stories
+                    </h3>
+<div class="flex flex-col gap-4">
+<!-- Story Item -->
+<a class="group block" href="solution_impact_report.html">
+<div class="h-24 bg-surface-container rounded-lg mb-2 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoynxkzBkN5hDygnfmOr9XEH5288tCAYoZpuYoo4YouyiKYzAYVPRaC93riF65XqrogNvui-Di745k6PWwtyVoPiwXYuXt9M30L0HK81pwVWrGaru1JVFTpwPOxvHq4zvz5AF_Sy1HPIpNM093q6jLnjm0fOrE0zsJEg5lhaE2FaTW6ieEB2wuIvQqChsdIJ5pRiLUtviD5zqpQGn8xjvkJ0_27pfR6_Ml3Mnn2fwP7Xh5t6jKwhKt">
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<span class="absolute bottom-2 left-2 px-2 py-0.5 bg-secondary text-on-secondary text-[10px] font-bold rounded">SOLVED</span>
+</div>
+<h4 class="text-label-md font-label-md text-on-surface group-hover:text-secondary transition-colors line-clamp-2">Smart Irrigation Project Implemented in District 4</h4>
+<p class="text-[10px] text-on-surface-variant mt-1">Led by Tech Institute • 3 days ago</p>
+</a>
+<div class="h-px w-full bg-outline-variant"></div>
+<!-- Story Item -->
+<a class="group block" href="solution_impact_report.html">
+<h4 class="text-label-sm font-label-sm text-on-surface group-hover:text-secondary transition-colors line-clamp-2 mb-1">Pothole Repair Drive Completed on Main Arterial</h4>
+<p class="text-[10px] text-on-surface-variant">City Council • 1 week ago</p>
+</a>
+</div>
+<a href="impact_tracking_dashboard.html" class="block w-full mt-4 py-2 text-center text-label-sm font-label-sm text-primary border border-outline rounded-lg hover:bg-surface-container-low transition-colors font-bold">
+View All Successes & Impact →
+</a>
+</div>
+</aside>
+</main>
+<!-- ==========================================
+             BottomNavBar (Mobile)
+             ========================================== -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface border-t border-outline-variant rounded-t-xl pb-safe shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-secondary font-bold p-2 active:bg-surface-container-high rounded-lg transition-transform scale-90 duration-150" href="citizen_home_feed.html">
+<span class="material-symbols-outlined fill-icon mb-1">home</span>
+<span class="text-[10px] font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active:bg-surface-container-high rounded-lg" href="district_insights_map.html">
+<span class="material-symbols-outlined mb-1">search</span>
+<span class="text-[10px] font-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active:bg-surface-container-high rounded-lg" href="report_a_problem_flow.html">
+<span class="material-symbols-outlined mb-1 text-primary-container font-bold">add_circle</span>
+<span class="text-[10px] font-label-sm font-bold">Report</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active:bg-surface-container-high rounded-lg" href="impact_tracking_dashboard.html">
+<span class="material-symbols-outlined mb-1">layers</span>
+<span class="text-[10px] font-label-sm">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 active:bg-surface-container-high rounded-lg" href="government_command_center.html">
+<span class="material-symbols-outlined mb-1">notifications</span>
+<span class="text-[10px] font-label-sm">Alerts</span>
+</a>
+</nav>
+<!-- Mobile FAB for Report Problem (Contextual fallback if not using nav item) -->
+<a href="report_a_problem_flow.html" title="Report Problem" class="md:hidden fixed bottom-20 right-4 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center z-40 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 28px;">add</span>
+</a>
+</div>
+
+
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (19)</span>
+    </button>
+  </div>
+  
+
+  <!-- Global Civic Pulse Screen Navigator -->
+  <div id="civic-pulse-screen-navigator" class="fixed bottom-4 right-4 z-[9999] font-sans">
+    <div id="screen-nav-menu" class="hidden mb-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 p-3 w-64 max-h-80 overflow-y-auto transition-all">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-gray-100">
+        <span class="text-xs font-bold text-gray-800 uppercase tracking-wider">All 21 Screens</span>
+        <a href="../index.html" class="text-[11px] text-blue-600 hover:underline font-medium">Index ↗</a>
+      </div>
+      <div class="space-y-0.5">
+        
+    <a href="landing_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Landing Page
+    </a>
+  
+    <a href="login.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Sign In / Login
+    </a>
+  
+    <a href="signup.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Register / Sign Up
+    </a>
+  
+    <a href="citizen_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors bg-black text-white font-bold">
+      Citizen Home Feed
+    </a>
+  
+    <a href="mobile_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Mobile Home Feed
+    </a>
+  
+    <a href="report_a_problem_flow.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Report a Problem
+    </a>
+  
+    <a href="duplicate_problem_detection.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Duplicate Detection
+    </a>
+  
+    <a href="problem_details_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Problem Details
+    </a>
+  
+    <a href="university_recommendations.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Recommendations
+    </a>
+  
+    <a href="recommendation_detail_view.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Recommendation Details
+    </a>
+  
+    <a href="match_evidence_details.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Match Evidence
+    </a>
+  
+    <a href="university_comparison.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      University Comparison
+    </a>
+  
+    <a href="partner_directory.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Partner Directory
+    </a>
+  
+    <a href="government_command_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Command Center
+    </a>
+  
+    <a href="government_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Government Dashboard
+    </a>
+  
+    <a href="district_insights_map.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      District Insights Map
+    </a>
+  
+    <a href="ai_analysis_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      AI Analysis Center
+    </a>
+  
+    <a href="impact_tracking_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Impact Tracking
+    </a>
+  
+    <a href="solution_impact_report.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Solution Impact Report
+    </a>
+  
+    <a href="citizen_government_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Citizen-Gov Ecosystem
+    </a>
+  
+    <a href="innovation_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
+      Innovation Ecosystem
+    </a>
+  
+      </div>
+    </div>
+    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
+      <span class="material-symbols-outlined text-sm">explore</span>
+      <span>Screens (21)</span>
+    </button>
+  </div>
+  
+
+<script>
+  function filterFeed(category, btnElement) {
+    const pills = document.querySelectorAll('.category-pill');
+    pills.forEach(pill => {
+      pill.classList.remove('bg-primary', 'text-on-primary', 'border-transparent', 'shadow-sm', 'active');
+      pill.classList.add('bg-surface', 'text-on-surface-variant', 'border-outline');
+    });
+
+    if (btnElement) {
+      btnElement.classList.remove('bg-surface', 'text-on-surface-variant', 'border-outline');
+      btnElement.classList.add('bg-primary', 'text-on-primary', 'border-transparent', 'shadow-sm', 'active');
+    }
+
+    const items = document.querySelectorAll('.feed-item');
+    let matchedCount = 0;
+
+    items.forEach(item => {
+      const itemCat = item.getAttribute('data-category');
+      if (category === 'all' || itemCat === category) {
+        item.style.display = 'block';
+        item.style.opacity = '0';
+        setTimeout(() => {
+          item.style.transition = 'opacity 0.2s ease';
+          item.style.opacity = '1';
+        }, 30);
+        matchedCount++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+</script>
+  
+</body></html>
