@@ -121,12 +121,12 @@
 <span class="font-label-md text-label-md">Back to Explore</span>
 </a>
 <a href="landing_page.html" class="font-headline-md text-headline-md text-primary font-bold hidden md:block hover:opacity-80">Civic Pulse</a>
-<div class="flex items-center gap-4">
-<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
-<span class="material-symbols-outlined">share</span>
+<div class="flex items-center gap-2">
+<button id="share-btn" onclick="handleShare(event)" class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container active:scale-90 rounded-full transition-all duration-200" title="Share Problem">
+<span class="material-symbols-outlined text-[22px]">share</span>
 </button>
-<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
-<span class="material-symbols-outlined">bookmark_border</span>
+<button id="bookmark-btn" onclick="toggleBookmark(event)" class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container active:scale-90 rounded-full transition-all duration-200" title="Bookmark Problem">
+<span id="bookmark-icon" class="material-symbols-outlined text-[22px]">bookmark_border</span>
 </button>
 </div>
 </div>
@@ -159,29 +159,30 @@
 </article>
 <hr class="border-outline-variant">
 <!-- Community Collaboration Section -->
-<section class="flex flex-col gap-6">
+<section class="flex flex-col gap-6" id="comments">
 <div class="flex items-center justify-between">
 <h2 class="font-headline-md text-headline-md text-primary">Community Input</h2>
-<span class="font-label-md text-label-md text-on-surface-variant">24 Comments</span>
-</div><div class="flex border-b border-outline-variant gap-6">
-<button class="pb-2 border-b-2 border-primary text-primary font-label-md text-label-md">Discussion</button>
-<button class="pb-2 text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors">Suggestions</button>
-<button class="pb-2 text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors">Evidence</button>
+<span id="comment-count-badge" class="font-label-md text-label-md text-on-surface-variant">24 Comments</span>
 </div>
-<div class="flex flex-col gap-4">
+<div class="flex border-b border-outline-variant gap-6" id="comment-tabs">
+<button onclick="switchTab(this, 'discussion')" class="tab-btn pb-2 border-b-2 border-primary text-primary font-label-md text-label-md transition-colors">Discussion</button>
+<button onclick="switchTab(this, 'suggestions')" class="tab-btn pb-2 text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors">Suggestions</button>
+<button onclick="switchTab(this, 'evidence')" class="tab-btn pb-2 text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors">Evidence</button>
+</div>
+<div id="comments-list" class="flex flex-col gap-4">
 <!-- Comment 1 -->
-<div class="flex gap-4 p-4 rounded-xl bg-surface-container-lowest border border-outline-variant">
-<div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center flex-shrink-0 font-label-md text-label-md">P</div>
+<div class="comment-card flex gap-4 p-4 rounded-xl bg-surface-container-lowest border border-outline-variant" data-type="discussion">
+<div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center flex-shrink-0 font-label-md text-label-md font-bold">P</div>
 <div class="flex flex-col gap-1 w-full">
 <div class="flex items-center justify-between">
-<span class="font-label-md text-label-md text-primary">Priya S.</span>
+<span class="font-label-md text-label-md text-primary font-semibold">Priya S.</span>
 <span class="font-label-sm text-label-sm text-on-surface-variant">2 days ago</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant">The situation is definitely worse in the evening. We wait until 8 PM and still nothing comes through the taps. It's affecting the children's ability to clean up after school.</p>
 </div>
 </div>
 <!-- Comment 2 (Team Response) -->
-<div class="flex gap-4 p-4 rounded-xl bg-primary-fixed/20 border border-primary-fixed-dim ml-8 relative">
+<div class="comment-card flex gap-4 p-4 rounded-xl bg-primary-fixed/20 border border-primary-fixed-dim ml-8 relative" data-type="discussion">
 <div class="absolute -left-4 top-8 w-4 h-[1px] bg-outline-variant"></div>
 <div class="absolute -left-4 top-0 bottom-8 w-[1px] bg-outline-variant"></div>
 <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0">
@@ -190,7 +191,7 @@
 <div class="flex flex-col gap-1 w-full">
 <div class="flex items-center justify-between">
 <div class="flex items-center gap-2">
-<span class="font-label-md text-label-md text-primary">Student Team</span>
+<span class="font-label-md text-label-md text-primary font-bold">Student Team</span>
 <span class="px-2 py-0.5 rounded bg-primary text-on-primary font-label-sm text-label-sm text-[10px]">Resolver</span>
 </div>
 <span class="font-label-sm text-label-sm text-on-surface-variant">1 day ago</span>
@@ -200,29 +201,32 @@
 </div>
 </div>
 <!-- Add Comment -->
-<div class="flex gap-4 mt-2">
+<form onsubmit="handlePostComment(event)" class="flex gap-4 mt-2">
 <div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center flex-shrink-0">
 <span class="material-symbols-outlined text-on-surface-variant">person</span>
 </div>
 <div class="flex-grow flex gap-2">
-<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:border-tertiary-container focus:ring-2 focus:ring-tertiary-container/20 transition-all" placeholder="Add a constructive update..." type="text">
-<button class="bg-primary text-on-primary px-4 py-2 rounded-xl font-label-md text-label-md hover:bg-primary/90 transition-colors">Post</button>
+<input id="comment-input" class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:border-tertiary-container focus:ring-2 focus:ring-tertiary-container/20 transition-all" placeholder="Add a constructive update or comment..." type="text">
+<button type="submit" class="bg-primary text-on-primary px-5 py-2 rounded-xl font-label-md text-label-md hover:bg-primary/90 active:scale-95 transition-all font-semibold flex items-center gap-1">
+<span>Post</span>
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
 </div>
-</div>
+</form>
 </section>
 </div>
 <!-- Right Column: Sidebar & Meta -->
 <div class="lg:col-span-4 flex flex-col gap-6">
 <!-- Action Buttons (Sticky on Desktop) -->
 <div class="flex flex-col gap-3 sticky top-24 z-10">
-<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-xl flex items-center justify-center gap-2 shadow-sm hover:shadow-md transition-all active:scale-[0.98]">
-<span class="material-symbols-outlined icon-fill">waving_hand</span>
-                        I'm Affected Too
-                    </button>
-<a href="government_command_center.html" class="w-full bg-surface-container-lowest border-2 border-outline-variant text-primary font-label-md text-label-md py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-surface-container-low transition-all font-bold">
-<span class="material-symbols-outlined">notifications</span>
-Follow Updates & Activity
-</a>
+<button id="affected-btn" onclick="toggleAffected(event)" class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-xl flex items-center justify-center gap-2 shadow-sm hover:shadow-md transition-all active:scale-[0.98]">
+<span id="affected-icon" class="material-symbols-outlined icon-fill">waving_hand</span>
+<span id="affected-text">I'm Affected Too (126)</span>
+</button>
+<button id="follow-btn" onclick="toggleFollow(event)" class="w-full bg-surface-container-lowest border-2 border-outline-variant text-primary font-label-md text-label-md py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-surface-container-low transition-all font-bold active:scale-[0.98]">
+<span id="follow-icon" class="material-symbols-outlined">notifications</span>
+<span id="follow-text">Follow Updates & Activity</span>
+</button>
 </div>
 <!-- Status Tracking Card -->
 <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-6">
@@ -346,116 +350,190 @@ Follow Updates & Activity
 </div>
 </main>
 
+<!-- Toast Notification Element -->
+<div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3 bg-surface-container-highest border border-outline text-on-surface px-5 py-3.5 rounded-xl shadow-xl">
+    <span id="toast-icon" class="material-symbols-outlined text-secondary text-xl">check_circle</span>
+    <span id="toast-message" class="text-label-md font-medium">Notification message</span>
+</div>
 
-
-  <!-- Global Civic Pulse Screen Navigator -->
-  
-    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
-      <span class="material-symbols-outlined text-sm">explore</span>
-      <span>Screens (19)</span>
-    </button>
-  </div>
-  
-
-  <!-- Global Civic Pulse Screen Navigator -->
-  <div id="civic-pulse-screen-navigator" class="fixed bottom-4 right-4 z-[9999] font-sans">
-    <div id="screen-nav-menu" class="hidden mb-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 p-3 w-64 max-h-80 overflow-y-auto transition-all">
-      <div class="flex items-center justify-between pb-2 mb-2 border-b border-gray-100">
-        <span class="text-xs font-bold text-gray-800 uppercase tracking-wider">All 21 Screens</span>
-        <a href="../index.html" class="text-[11px] text-blue-600 hover:underline font-medium">Index ↗</a>
-      </div>
-      <div class="space-y-0.5">
+<script>
+    // Toast helper
+    function showToast(message, icon = 'check_circle', isSuccess = true) {
+        const toast = document.getElementById('toast');
+        const msgEl = document.getElementById('toast-message');
+        const iconEl = document.getElementById('toast-icon');
         
-    <a href="landing_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Landing Page
-    </a>
-  
-    <a href="login.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Sign In / Login
-    </a>
-  
-    <a href="signup.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Register / Sign Up
-    </a>
-  
-    <a href="citizen_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Citizen Home Feed
-    </a>
-  
-    <a href="mobile_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Mobile Home Feed
-    </a>
-  
-    <a href="report_a_problem_flow.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Report a Problem
-    </a>
-  
-    <a href="duplicate_problem_detection.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Duplicate Detection
-    </a>
-  
-    <a href="problem_details_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors bg-black text-white font-bold">
-      Problem Details
-    </a>
-  
-    <a href="university_recommendations.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      University Recommendations
-    </a>
-  
-    <a href="recommendation_detail_view.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Recommendation Details
-    </a>
-  
-    <a href="match_evidence_details.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Match Evidence
-    </a>
-  
-    <a href="university_comparison.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      University Comparison
-    </a>
-  
-    <a href="partner_directory.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Partner Directory
-    </a>
-  
-    <a href="government_command_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Government Command Center
-    </a>
-  
-    <a href="government_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Government Dashboard
-    </a>
-  
-    <a href="district_insights_map.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      District Insights Map
-    </a>
-  
-    <a href="ai_analysis_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      AI Analysis Center
-    </a>
-  
-    <a href="impact_tracking_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Impact Tracking
-    </a>
-  
-    <a href="solution_impact_report.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Solution Impact Report
-    </a>
-  
-    <a href="citizen_government_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Citizen-Gov Ecosystem
-    </a>
-  
-    <a href="innovation_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Innovation Ecosystem
-    </a>
-  
-      </div>
-    </div>
-    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
-      <span class="material-symbols-outlined text-sm">explore</span>
-      <span>Screens (21)</span>
-    </button>
-  </div>
-  
+        msgEl.textContent = message;
+        iconEl.textContent = icon;
+        iconEl.className = isSuccess ? 'material-symbols-outlined text-secondary text-xl' : 'material-symbols-outlined text-primary text-xl';
+        
+        toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        
+        setTimeout(() => {
+            toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.classList.remove('translate-y-0', 'opacity-100');
+        }, 3000);
+    }
+
+    // Share Handler
+    function handleShare(event) {
+        if (event) event.preventDefault();
+        const shareData = {
+            title: 'Irregular Water Supply in Village X - Civic Pulse',
+            text: 'Track and collaborate on resolving the irregular water supply problem in Village X.',
+            url: window.location.href
+        };
+        
+        if (navigator.share) {
+            navigator.share(shareData).then(() => {
+                showToast('Shared successfully!', 'share');
+            }).catch(() => {
+                copyToClipboard();
+            });
+        } else {
+            copyToClipboard();
+        }
+    }
+
+    function copyToClipboard() {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showToast('Link copied to clipboard!', 'content_copy');
+            }).catch(() => {
+                showToast('Link ready to share!', 'link');
+            });
+        } else {
+            showToast('Link copied to clipboard!', 'content_copy');
+        }
+    }
+
+    // Bookmark Toggle
+    let isBookmarked = false;
+    function toggleBookmark(event) {
+        if (event) event.preventDefault();
+        isBookmarked = !isBookmarked;
+        const icon = document.getElementById('bookmark-icon');
+        const btn = document.getElementById('bookmark-btn');
+        
+        if (isBookmarked) {
+            icon.textContent = 'bookmark';
+            icon.style.fontVariationSettings = "'FILL' 1";
+            btn.classList.add('text-secondary');
+            btn.classList.remove('text-on-surface-variant');
+            showToast('Problem saved to bookmarks!', 'bookmark');
+        } else {
+            icon.textContent = 'bookmark_border';
+            icon.style.fontVariationSettings = "'FILL' 0";
+            btn.classList.remove('text-secondary');
+            btn.classList.add('text-on-surface-variant');
+            showToast('Removed from bookmarks', 'bookmark_border', false);
+        }
+    }
+
+    // Affected Toggle
+    let isAffected = false;
+    let affectedCount = 126;
+    function toggleAffected(event) {
+        if (event) event.preventDefault();
+        isAffected = !isAffected;
+        const btn = document.getElementById('affected-btn');
+        const text = document.getElementById('affected-text');
+        
+        if (isAffected) {
+            affectedCount++;
+            text.textContent = `You're Affected (${affectedCount})`;
+            btn.classList.remove('bg-primary');
+            btn.classList.add('bg-secondary', 'text-on-secondary');
+            showToast('Your endorsement was added!', 'front_hand');
+        } else {
+            affectedCount--;
+            text.textContent = `I'm Affected Too (${affectedCount})`;
+            btn.classList.add('bg-primary');
+            btn.classList.remove('bg-secondary', 'text-on-secondary');
+            showToast('Endorsement removed', 'thumb_down', false);
+        }
+    }
+
+    // Follow Updates Toggle
+    let isFollowing = false;
+    function toggleFollow(event) {
+        if (event) event.preventDefault();
+        isFollowing = !isFollowing;
+        const btn = document.getElementById('follow-btn');
+        const text = document.getElementById('follow-text');
+        const icon = document.getElementById('follow-icon');
+        
+        if (isFollowing) {
+            text.textContent = 'Following Updates';
+            icon.textContent = 'notifications_active';
+            icon.style.fontVariationSettings = "'FILL' 1";
+            btn.classList.add('bg-secondary-container', 'text-on-secondary-container', 'border-secondary');
+            showToast('You will receive updates for this issue', 'notifications_active');
+        } else {
+            text.textContent = 'Follow Updates & Activity';
+            icon.textContent = 'notifications';
+            icon.style.fontVariationSettings = "'FILL' 0";
+            btn.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'border-secondary');
+            showToast('Unfollowed problem updates', 'notifications_off', false);
+        }
+    }
+
+    // Tab switching
+    function switchTab(btn, tabName) {
+        document.querySelectorAll('#comment-tabs .tab-btn').forEach(t => {
+            t.classList.remove('border-b-2', 'border-primary', 'text-primary');
+            t.classList.add('text-on-surface-variant');
+        });
+        btn.classList.add('border-b-2', 'border-primary', 'text-primary');
+        btn.classList.remove('text-on-surface-variant');
+        
+        const cards = document.querySelectorAll('#comments-list .comment-card');
+        cards.forEach(card => {
+            if (tabName === 'discussion' || card.getAttribute('data-type') === tabName) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        showToast(`Switched to ${btn.textContent.trim()} view`, 'filter_list');
+    }
+
+    // Post Comment
+    let totalComments = 24;
+    function handlePostComment(event) {
+        event.preventDefault();
+        const input = document.getElementById('comment-input');
+        const text = input.value.trim();
+        if (!text) return;
+        
+        totalComments++;
+        document.getElementById('comment-count-badge').textContent = `${totalComments} Comments`;
+        
+        const list = document.getElementById('comments-list');
+        const newCard = document.createElement('div');
+        newCard.className = 'comment-card flex gap-4 p-4 rounded-xl bg-surface-container-lowest border border-outline-variant animate-fade-in';
+        newCard.setAttribute('data-type', 'discussion');
+        newCard.innerHTML = `
+            <div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center flex-shrink-0 font-label-md text-label-md font-bold">JD</div>
+            <div class="flex flex-col gap-1 w-full">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="font-label-md text-label-md text-primary font-semibold">Jane Doe</span>
+                        <span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[10px] font-bold">Citizen</span>
+                    </div>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant">Just now</span>
+                </div>
+                <p class="font-body-md text-body-md text-on-surface">${escapeHtml(text)}</p>
+            </div>
+        `;
+        list.insertBefore(newCard, list.firstChild);
+        input.value = '';
+        showToast('Comment submitted successfully!', 'check_circle');
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+</script>
 </body></html>

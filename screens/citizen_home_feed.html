@@ -239,10 +239,6 @@
 <span class="material-symbols-outlined">rocket_launch</span>
 <span class="text-label-md font-label-md">Projects & Impact</span>
 </a>
-<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-xl transition-colors cursor-pointer" href="ai_analysis_center.html">
-<span class="material-symbols-outlined">psychology</span>
-<span class="text-label-md font-label-md">AI Analysis</span>
-</a>
 </div>
 <!-- Footer Nav -->
 <div class="flex flex-col gap-2 mt-auto pt-4 border-t border-outline-variant">
@@ -290,10 +286,25 @@
 <!-- Center Feed Column -->
 <section class="flex-1 flex flex-col min-w-0 bg-background overflow-y-auto custom-scrollbar">
 <!-- Feed Header & Filters -->
-<div class="sticky top-0 z-30 bg-background/90 backdrop-blur-md px-margin-mobile md:px-gutter py-6 border-b border-outline-variant"><div class="flex flex-col gap-4"><div class="flex flex-col md:flex-row md:items-center justify-between gap-2"><div><h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary">Problems Near You</h2><div class="flex items-center gap-2 mt-1 text-secondary font-semibold"><span class="material-symbols-outlined" style="font-size: 18px;">location_on</span><span class="text-label-md">Ranchi, Jharkhand</span><span class="text-on-surface-variant font-normal text-label-sm ml-2">• Showing challenges within 10 km</span></div></div><a href="district_insights_map.html" class="hidden md:flex items-center gap-2 px-4 py-2 bg-surface border border-outline rounded-lg text-label-md hover:bg-surface-container-low transition-colors font-semibold">
-<span class="material-symbols-outlined" style="font-size: 20px;">distance</span>
-<span>Change Radius & View Map</span>
-</a></div><div class="flex overflow-x-auto custom-scrollbar pb-2 -mb-2 gap-2" id="feed-category-filters">
+<div class="sticky top-0 z-30 bg-background/90 backdrop-blur-md px-margin-mobile md:px-gutter py-6 border-b border-outline-variant"><div class="flex flex-col gap-4"><div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+  <div>
+    <h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary">Problems Near You</h2>
+    <div class="flex items-center gap-2 mt-1 text-secondary font-semibold">
+      <span class="material-symbols-outlined" style="font-size: 18px;">location_on</span>
+      <span class="text-label-md">Ranchi, Jharkhand</span>
+      <span class="text-on-surface-variant font-normal text-label-sm ml-2">• Showing challenges within 10 km</span>
+    </div>
+  </div>
+  <a href="district_insights_map.html" class="hidden md:flex items-center gap-2 px-4 py-2 bg-surface border border-outline rounded-lg text-label-md hover:bg-surface-container-low transition-colors font-semibold">
+    <span class="material-symbols-outlined" style="font-size: 20px;">distance</span>
+    <span>Change Radius & View Map</span>
+  </a>
+</div>
+<div class="relative w-full">
+  <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+  <input type="text" id="feed-search-input" oninput="searchFeed(this.value)" placeholder="Search challenges by keyword, location, or department..." class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-xl text-body-md font-body-md text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all shadow-sm">
+</div>
+<div class="flex overflow-x-auto custom-scrollbar pb-2 -mb-2 gap-2" id="feed-category-filters">
   <button onclick="filterFeed('all', this)" class="category-pill active px-4 py-2 bg-primary text-on-primary text-label-md font-label-md rounded-full whitespace-nowrap border border-transparent shadow-sm transition-all">All</button>
   <button onclick="filterFeed('water', this)" class="category-pill px-4 py-2 bg-surface text-on-surface-variant text-label-md font-label-md rounded-full whitespace-nowrap border border-outline hover:bg-surface-container-low transition-all">Water</button>
   <button onclick="filterFeed('roads', this)" class="category-pill px-4 py-2 bg-surface text-on-surface-variant text-label-md font-label-md rounded-full whitespace-nowrap border border-outline hover:bg-surface-container-low transition-all">Roads</button>
@@ -344,15 +355,21 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-outline-variant">
-      <button onclick="this.classList.toggle('bg-secondary');this.classList.toggle('text-white');" class="flex-1 min-w-[140px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 transition-colors font-bold">
-        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span>I'm Affected
+    <div class="flex flex-wrap items-center gap-2 pt-4 border-t border-outline-variant">
+      <button onclick="toggleCardAffected(this, 126, 'Irregular Water Supply')" class="affected-btn flex-1 min-w-[130px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 active:scale-95 transition-all font-bold">
+        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span><span>I'm Affected</span>
       </button>
-      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors font-medium">
-        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span>14 Comments
+      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-1.5 hover:bg-surface-container-low transition-colors font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span><span>14</span>
       </a>
-      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors ml-auto font-medium">
-        <span class="material-symbols-outlined" style="font-size: 18px;">bookmark</span>Details
+      <button onclick="shareFeedItem('Irregular Water Supply in Village X')" title="Share Problem" class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg border border-outline transition-all active:scale-90 flex items-center justify-center">
+        <span class="material-symbols-outlined" style="font-size: 18px;">share</span>
+      </button>
+      <button onclick="toggleCardBookmark(this, 'Irregular Water Supply in Village X')" title="Bookmark Problem" class="bookmark-btn p-2 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded-lg border border-outline transition-all active:scale-90 flex items-center justify-center">
+        <span class="material-symbols-outlined bookmark-icon" style="font-size: 18px;">bookmark_border</span>
+      </button>
+      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-1 hover:bg-surface-container-low transition-colors font-bold ml-auto">
+        <span>Details</span><span class="material-symbols-outlined text-sm">arrow_forward</span>
       </a>
     </div>
   </article>
@@ -367,7 +384,7 @@
           <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>1.8 km away • NH-33 Link
         </span>
       </div>
-      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+      <button onclick="showToast('Options for this post', 'more_horiz')" class="text-on-surface-variant hover:text-primary transition-colors p-1"><span class="material-symbols-outlined">more_horiz</span></button>
     </div>
     <div class="mb-4">
       <h3 class="text-headline-md font-headline-md text-primary mb-2">
@@ -395,15 +412,21 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-outline-variant">
-      <button onclick="this.classList.toggle('bg-secondary');this.classList.toggle('text-white');" class="flex-1 min-w-[140px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 transition-colors font-bold">
-        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span>I'm Affected
+    <div class="flex flex-wrap items-center gap-2 pt-4 border-t border-outline-variant">
+      <button onclick="toggleCardAffected(this, 342, 'Dangerous Potholes')" class="affected-btn flex-1 min-w-[130px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 active:scale-95 transition-all font-bold">
+        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span><span>I'm Affected</span>
       </button>
-      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors font-medium">
-        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span>38 Comments
+      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-1.5 hover:bg-surface-container-low transition-colors font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span><span>38</span>
       </a>
-      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors ml-auto font-medium">
-        <span class="material-symbols-outlined" style="font-size: 18px;">bookmark</span>Details
+      <button onclick="shareFeedItem('Dangerous Potholes on NH-33 Bypass')" title="Share Problem" class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg border border-outline transition-all active:scale-90 flex items-center justify-center">
+        <span class="material-symbols-outlined" style="font-size: 18px;">share</span>
+      </button>
+      <button onclick="toggleCardBookmark(this, 'Dangerous Potholes on NH-33 Bypass')" title="Bookmark Problem" class="bookmark-btn p-2 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded-lg border border-outline transition-all active:scale-90 flex items-center justify-center">
+        <span class="material-symbols-outlined bookmark-icon" style="font-size: 18px;">bookmark_border</span>
+      </button>
+      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-1 hover:bg-surface-container-low transition-colors font-bold ml-auto">
+        <span>Details</span><span class="material-symbols-outlined text-sm">arrow_forward</span>
       </a>
     </div>
   </article>
@@ -418,7 +441,7 @@
           <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>4.2 km away • Angara Block
         </span>
       </div>
-      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+      <button onclick="showToast('Options for this post', 'more_horiz')" class="text-on-surface-variant hover:text-primary transition-colors p-1"><span class="material-symbols-outlined">more_horiz</span></button>
     </div>
     <div class="mb-4">
       <h3 class="text-headline-md font-headline-md text-primary mb-2">
@@ -446,15 +469,21 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-outline-variant">
-      <button onclick="this.classList.toggle('bg-secondary');this.classList.toggle('text-white');" class="flex-1 min-w-[140px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 transition-colors font-bold">
-        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span>I'm Affected
+    <div class="flex flex-wrap items-center gap-2 pt-4 border-t border-outline-variant">
+      <button onclick="toggleCardAffected(this, 510, 'Health Center Cold Storage')" class="affected-btn flex-1 min-w-[130px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 active:scale-95 transition-all font-bold">
+        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span><span>I'm Affected</span>
       </button>
-      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors font-medium">
-        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span>29 Comments
+      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-1.5 hover:bg-surface-container-low transition-colors font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span><span>29</span>
       </a>
-      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors ml-auto font-medium">
-        <span class="material-symbols-outlined" style="font-size: 18px;">bookmark</span>Details
+      <button onclick="shareFeedItem('PHC Cold Storage & Medicine Stockout')" title="Share Problem" class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg border border-outline transition-all active:scale-90 flex items-center justify-center">
+        <span class="material-symbols-outlined" style="font-size: 18px;">share</span>
+      </button>
+      <button onclick="toggleCardBookmark(this, 'PHC Cold Storage & Medicine Stockout')" title="Bookmark Problem" class="bookmark-btn p-2 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded-lg border border-outline transition-all active:scale-90 flex items-center justify-center">
+        <span class="material-symbols-outlined bookmark-icon" style="font-size: 18px;">bookmark_border</span>
+      </button>
+      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-1 hover:bg-surface-container-low transition-colors font-bold ml-auto">
+        <span>Details</span><span class="material-symbols-outlined text-sm">arrow_forward</span>
       </a>
     </div>
   </article>
@@ -469,7 +498,7 @@
           <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>3.5 km away • Namkum
         </span>
       </div>
-      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+      <button onclick="showToast('Options for this post', 'more_horiz')" class="text-on-surface-variant hover:text-primary transition-colors p-1"><span class="material-symbols-outlined">more_horiz</span></button>
     </div>
     <div class="mb-4">
       <h3 class="text-headline-md font-headline-md text-primary mb-2">
@@ -497,15 +526,21 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-outline-variant">
-      <button onclick="this.classList.toggle('bg-secondary');this.classList.toggle('text-white');" class="flex-1 min-w-[140px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 transition-colors font-bold">
-        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span>I'm Affected
+    <div class="flex flex-wrap items-center gap-2 pt-4 border-t border-outline-variant">
+      <button onclick="toggleCardAffected(this, 412, 'Digital Lab Power Disruption')" class="affected-btn flex-1 min-w-[130px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 active:scale-95 transition-all font-bold">
+        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span><span>I'm Affected</span>
       </button>
-      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors font-medium">
-        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span>19 Comments
+      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-1.5 hover:bg-surface-container-low transition-colors font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span><span>19</span>
       </a>
-      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors ml-auto font-medium">
-        <span class="material-symbols-outlined" style="font-size: 18px;">bookmark</span>Details
+      <button onclick="shareFeedItem('Digital Lab Power Disruption at Namkum')" title="Share Problem" class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg border border-outline transition-all active:scale-90 flex items-center justify-center">
+        <span class="material-symbols-outlined" style="font-size: 18px;">share</span>
+      </button>
+      <button onclick="toggleCardBookmark(this, 'Digital Lab Power Disruption at Namkum')" title="Bookmark Problem" class="bookmark-btn p-2 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded-lg border border-outline transition-all active:scale-90 flex items-center justify-center">
+        <span class="material-symbols-outlined bookmark-icon" style="font-size: 18px;">bookmark_border</span>
+      </button>
+      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-1 hover:bg-surface-container-low transition-colors font-bold ml-auto">
+        <span>Details</span><span class="material-symbols-outlined text-sm">arrow_forward</span>
       </a>
     </div>
   </article>
@@ -520,7 +555,7 @@
           <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>8.1 km away • Tamar Block
         </span>
       </div>
-      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+      <button onclick="showToast('Options for this post', 'more_horiz')" class="text-on-surface-variant hover:text-primary transition-colors p-1"><span class="material-symbols-outlined">more_horiz</span></button>
     </div>
     <div class="mb-4">
       <h3 class="text-headline-md font-headline-md text-primary mb-2">
@@ -548,15 +583,21 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-outline-variant">
-      <button onclick="this.classList.toggle('bg-secondary');this.classList.toggle('text-white');" class="flex-1 min-w-[140px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 transition-colors font-bold">
-        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span>I'm Affected
+    <div class="flex flex-wrap items-center gap-2 pt-4 border-t border-outline-variant">
+      <button onclick="toggleCardAffected(this, 184, 'Groundwater Depletion in Tamar')" class="affected-btn flex-1 min-w-[130px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 active:scale-95 transition-all font-bold">
+        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span><span>I'm Affected</span>
       </button>
-      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors font-medium">
-        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span>45 Comments
+      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-1.5 hover:bg-surface-container-low transition-colors font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span><span>45</span>
       </a>
-      <a href="solution_impact_report.html" class="text-primary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors ml-auto font-medium">
-        <span class="material-symbols-outlined" style="font-size: 18px;">bookmark</span>Details
+      <button onclick="shareFeedItem('Groundwater Depletion in Tamar')" title="Share Problem" class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg border border-outline transition-all active:scale-90 flex items-center justify-center">
+        <span class="material-symbols-outlined" style="font-size: 18px;">share</span>
+      </button>
+      <button onclick="toggleCardBookmark(this, 'Groundwater Depletion in Tamar')" title="Bookmark Problem" class="bookmark-btn p-2 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded-lg border border-outline transition-all active:scale-90 flex items-center justify-center">
+        <span class="material-symbols-outlined bookmark-icon" style="font-size: 18px;">bookmark_border</span>
+      </button>
+      <a href="solution_impact_report.html" class="text-primary text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-1 hover:bg-surface-container-low transition-colors font-bold ml-auto">
+        <span>Details</span><span class="material-symbols-outlined text-sm">arrow_forward</span>
       </a>
     </div>
   </article>
@@ -571,7 +612,7 @@
           <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>5.7 km away • Subarnarekha Basin
         </span>
       </div>
-      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+      <button onclick="showToast('Options for this post', 'more_horiz')" class="text-on-surface-variant hover:text-primary transition-colors p-1"><span class="material-symbols-outlined">more_horiz</span></button>
     </div>
     <div class="mb-4">
       <h3 class="text-headline-md font-headline-md text-primary mb-2">
@@ -599,15 +640,21 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-outline-variant">
-      <button onclick="this.classList.toggle('bg-secondary');this.classList.toggle('text-white');" class="flex-1 min-w-[140px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 transition-colors font-bold">
-        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span>I'm Affected
+    <div class="flex flex-wrap items-center gap-2 pt-4 border-t border-outline-variant">
+      <button onclick="toggleCardAffected(this, 630, 'Industrial Waste Dumping')" class="affected-btn flex-1 min-w-[130px] bg-secondary text-on-secondary text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-2 hover:bg-secondary/90 active:scale-95 transition-all font-bold">
+        <span class="material-symbols-outlined" style="font-size: 18px;">front_hand</span><span>I'm Affected</span>
       </button>
-      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors font-medium">
-        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span>52 Comments
+      <a href="problem_details_page.html#comments" class="bg-surface border border-outline text-on-surface text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-1.5 hover:bg-surface-container-low transition-colors font-medium">
+        <span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span><span>52</span>
       </a>
-      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-4 rounded-lg flex justify-center items-center gap-2 hover:bg-surface-container-low transition-colors ml-auto font-medium">
-        <span class="material-symbols-outlined" style="font-size: 18px;">bookmark</span>Details
+      <button onclick="shareFeedItem('Industrial Waste Dumping near River')" title="Share Problem" class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg border border-outline transition-all active:scale-90 flex items-center justify-center">
+        <span class="material-symbols-outlined" style="font-size: 18px;">share</span>
+      </button>
+      <button onclick="toggleCardBookmark(this, 'Industrial Waste Dumping near River')" title="Bookmark Problem" class="bookmark-btn p-2 text-on-surface-variant hover:text-secondary hover:bg-surface-container rounded-lg border border-outline transition-all active:scale-90 flex items-center justify-center">
+        <span class="material-symbols-outlined bookmark-icon" style="font-size: 18px;">bookmark_border</span>
+      </button>
+      <a href="problem_details_page.html" class="text-primary text-label-md font-label-md py-2 px-3 rounded-lg flex justify-center items-center gap-1 hover:bg-surface-container-low transition-colors font-bold ml-auto">
+        <span>Details</span><span class="material-symbols-outlined text-sm">arrow_forward</span>
       </a>
     </div>
   </article>
@@ -709,121 +756,33 @@ View All Successes & Impact →
 <span class="material-symbols-outlined" style="font-size: 28px;">add</span>
 </a>
 </div>
-
-
-
-  <!-- Global Civic Pulse Screen Navigator -->
-  
-    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
-      <span class="material-symbols-outlined text-sm">explore</span>
-      <span>Screens (19)</span>
-    </button>
-  </div>
   
 
-  <!-- Global Civic Pulse Screen Navigator -->
-  <div id="civic-pulse-screen-navigator" class="fixed bottom-4 right-4 z-[9999] font-sans">
-    <div id="screen-nav-menu" class="hidden mb-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 p-3 w-64 max-h-80 overflow-y-auto transition-all">
-      <div class="flex items-center justify-between pb-2 mb-2 border-b border-gray-100">
-        <span class="text-xs font-bold text-gray-800 uppercase tracking-wider">All 21 Screens</span>
-        <a href="../index.html" class="text-[11px] text-blue-600 hover:underline font-medium">Index ↗</a>
-      </div>
-      <div class="space-y-0.5">
-        
-    <a href="landing_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Landing Page
-    </a>
-  
-    <a href="login.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Sign In / Login
-    </a>
-  
-    <a href="signup.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Register / Sign Up
-    </a>
-  
-    <a href="citizen_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors bg-black text-white font-bold">
-      Citizen Home Feed
-    </a>
-  
-    <a href="mobile_home_feed.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Mobile Home Feed
-    </a>
-  
-    <a href="report_a_problem_flow.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Report a Problem
-    </a>
-  
-    <a href="duplicate_problem_detection.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Duplicate Detection
-    </a>
-  
-    <a href="problem_details_page.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Problem Details
-    </a>
-  
-    <a href="university_recommendations.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      University Recommendations
-    </a>
-  
-    <a href="recommendation_detail_view.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Recommendation Details
-    </a>
-  
-    <a href="match_evidence_details.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Match Evidence
-    </a>
-  
-    <a href="university_comparison.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      University Comparison
-    </a>
-  
-    <a href="partner_directory.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Partner Directory
-    </a>
-  
-    <a href="government_command_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Government Command Center
-    </a>
-  
-    <a href="government_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Government Dashboard
-    </a>
-  
-    <a href="district_insights_map.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      District Insights Map
-    </a>
-  
-    <a href="ai_analysis_center.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      AI Analysis Center
-    </a>
-  
-    <a href="impact_tracking_dashboard.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Impact Tracking
-    </a>
-  
-    <a href="solution_impact_report.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Solution Impact Report
-    </a>
-  
-    <a href="citizen_government_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Citizen-Gov Ecosystem
-    </a>
-  
-    <a href="innovation_ecosystem.html" class="block px-3 py-1.5 text-xs rounded-lg transition-colors text-gray-700 hover:bg-gray-100">
-      Innovation Ecosystem
-    </a>
-  
-      </div>
-    </div>
-    <button onclick="const m=document.getElementById('screen-nav-menu');m.classList.toggle('hidden');" class="bg-gray-900/90 hover:bg-black text-white px-3.5 py-2 rounded-full shadow-lg backdrop-blur-sm flex items-center gap-2 text-xs font-semibold transition-all hover:scale-105 active:scale-95 border border-white/20">
-      <span class="material-symbols-outlined text-sm">explore</span>
-      <span>Screens (21)</span>
-    </button>
-  </div>
-  
+<!-- Toast Notification Element -->
+<div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3 bg-surface-container-highest border border-outline text-on-surface px-5 py-3.5 rounded-xl shadow-xl">
+    <span id="toast-icon" class="material-symbols-outlined text-secondary text-xl">check_circle</span>
+    <span id="toast-message" class="text-label-md font-medium">Notification message</span>
+</div>
 
 <script>
+  function showToast(message, icon = 'check_circle', isSuccess = true) {
+    const toast = document.getElementById('toast');
+    const msgEl = document.getElementById('toast-message');
+    const iconEl = document.getElementById('toast-icon');
+    
+    msgEl.textContent = message;
+    iconEl.textContent = icon;
+    iconEl.className = isSuccess ? 'material-symbols-outlined text-secondary text-xl' : 'material-symbols-outlined text-primary text-xl';
+    
+    toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    
+    setTimeout(() => {
+      toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 3000);
+  }
+
   function filterFeed(category, btnElement) {
     const pills = document.querySelectorAll('.category-pill');
     pills.forEach(pill => {
@@ -837,23 +796,96 @@ View All Successes & Impact →
     }
 
     const items = document.querySelectorAll('.feed-item');
-    let matchedCount = 0;
-
     items.forEach(item => {
       const itemCat = item.getAttribute('data-category');
       if (category === 'all' || itemCat === category) {
         item.style.display = 'block';
-        item.style.opacity = '0';
-        setTimeout(() => {
-          item.style.transition = 'opacity 0.2s ease';
-          item.style.opacity = '1';
-        }, 30);
-        matchedCount++;
       } else {
         item.style.display = 'none';
       }
     });
   }
+
+  function searchFeed(query) {
+    const term = query.toLowerCase().trim();
+    const items = document.querySelectorAll('.feed-item');
+    let matches = 0;
+    
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (!term || text.includes(term)) {
+        item.style.display = 'block';
+        matches++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  function toggleCardAffected(btn, initialCount, title) {
+    const isAct = btn.classList.contains('is-affected');
+    const spanText = btn.querySelector('span:last-child');
+    
+    if (!isAct) {
+      btn.classList.add('is-affected', 'ring-2', 'ring-secondary');
+      btn.classList.remove('bg-secondary');
+      btn.classList.add('bg-primary', 'text-on-primary');
+      if (spanText) spanText.textContent = `Endorsed (${initialCount + 1})`;
+      showToast(`Added your endorsement to ${title}!`, 'front_hand');
+    } else {
+      btn.classList.remove('is-affected', 'ring-2', 'ring-secondary', 'bg-primary', 'text-on-primary');
+      btn.classList.add('bg-secondary', 'text-on-secondary');
+      if (spanText) spanText.textContent = `I'm Affected`;
+      showToast(`Removed endorsement from ${title}`, 'thumb_down', false);
+    }
+  }
+
+  function toggleCardBookmark(btn, title) {
+    const icon = btn.querySelector('.bookmark-icon');
+    const isBookmarked = icon.textContent === 'bookmark';
+    
+    if (!isBookmarked) {
+      icon.textContent = 'bookmark';
+      icon.style.fontVariationSettings = "'FILL' 1";
+      btn.classList.add('text-secondary', 'border-secondary', 'bg-secondary/10');
+      btn.classList.remove('text-on-surface-variant');
+      showToast(`Saved "${title}" to your bookmarks!`, 'bookmark');
+    } else {
+      icon.textContent = 'bookmark_border';
+      icon.style.fontVariationSettings = "'FILL' 0";
+      btn.classList.remove('text-secondary', 'border-secondary', 'bg-secondary/10');
+      btn.classList.add('text-on-surface-variant');
+      showToast(`Removed "${title}" from bookmarks`, 'bookmark_border', false);
+    }
+  }
+
+  function shareFeedItem(title) {
+    const url = window.location.origin + window.location.pathname.replace('citizen_home_feed.html', 'problem_details_page.html');
+    if (navigator.share) {
+      navigator.share({
+        title: title,
+        text: `Check out "${title}" on Civic Pulse`,
+        url: url
+      }).then(() => {
+        showToast('Shared successfully!', 'share');
+      }).catch(() => {
+        copyFeedLink(url);
+      });
+    } else {
+      copyFeedLink(url);
+    }
+  }
+
+  function copyFeedLink(url) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(() => {
+        showToast('Problem link copied to clipboard!', 'content_copy');
+      }).catch(() => {
+        showToast('Link ready to share!', 'link');
+      });
+    } else {
+      showToast('Problem link copied to clipboard!', 'content_copy');
+    }
+  }
 </script>
-  
 </body></html>
